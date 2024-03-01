@@ -26,51 +26,32 @@ class Solution
 public:
     int longestConsecutive(vector<int> &nums)
     {
-        // 思路：暴力搜索，但是通过判断起始数字是否已经被包含在之前的尝试中，减少不必要的尝试 
-        int smallNum, bigNum;
-        int maxLength = 0, tempLength;
-        int smallFlag = 1, bigFlag = 1;
-        int rounds = nums.size();
-        unordered_set<int> foundNum;
-        for (const int num : nums){
-            tempLength = 1;
-            foundNum.insert(num);
-            smallNum = num - 1, bigNum = num + 1;
-            while(rounds--){
-                if (find(foundNum.begin(), foundNum.end(), smallNum) != foundNum.end()
-                    || find(foundNum.begin(), foundNum.end(), bigNum) != foundNum.end())
-                    break;
-                
-                if (smallFlag && find(nums.begin(), nums.end(), smallNum) != nums.end())
-                {
-                    tempLength++;
-                    foundNum.insert(smallNum--);
-                }
-                else
-                    smallFlag = 0;
+        // 思路：暴力搜索，但是通过判断起始数字是否已经被包含在之前的尝试中，减少不必要的尝试
+        int maxLength = 0, tempLength = 0;
+        int curNum;
+        unordered_set<int> numSet; 
+        for (const int& num : nums)
+            numSet.insert(num);
 
-                if (bigFlag && find(nums.begin(), nums.end(), bigNum) != nums.end())
-                {
+        // 尝试以每一个num作为序列的起点
+        for (const int& num : nums){
+            if (!numSet.count(num - 1))
+            {
+                curNum = num;
+                tempLength = 1;
+                while (numSet.count(++curNum))
                     tempLength++;
-                    foundNum.insert(bigNum++);
-                }
-                else
-                    bigFlag = 0;
-
-                if (!bigFlag && !smallFlag)
-                    break;
             }
 
             maxLength = max(maxLength, tempLength);
-            rounds = nums.size();
-            smallFlag = 1, bigFlag = 1;
         }
 
         return maxLength;
     }
 };
 
-int main(){
+int main()
+{
     vector<int> nums;
     cout << "please input the nums: ";
     string line, token;
