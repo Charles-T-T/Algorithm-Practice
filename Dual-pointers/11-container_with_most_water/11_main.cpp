@@ -30,29 +30,30 @@ public:
     int maxArea(vector<int> &height)
     {
         // 思路：这题本质上是一个求矩形最大面积的问题
-        // 首先尝试暴力搜索
-        int width, length, curS, maxS = 0;
-        for (int i = 0; i < height.size(); i++)
+        // 利用双指针优化时间复杂度
+        int leftP = 0, rightP = height.size() - 1, maxArea = 0;
+        while (leftP < rightP)
         {
-            for (int j = i + 1; j < height.size(); j++){
-                width = j - i;
-                length = min(height[i], height[j]);
-                curS = width * length;
-                maxS = max(maxS, curS);
-            }
-        }
+            maxArea = max(maxArea, (rightP - leftP) * min(height[rightP], height[leftP]));
 
-        return maxS;
+            // 更新左右指针
+            if (height[leftP] < height[rightP])
+                leftP++;
+            else
+                rightP--;
+        }
+        return maxArea;
     }
 };
 
-int main(){
+int main()
+{
     vector<int> height;
     cout << "please input the heights: ";
     string line, token;
     getline(cin, line);
     stringstream ss(line);
-    while(ss >> token)
+    while (ss >> token)
         height.push_back(stoi(token));
 
     Solution obj;
