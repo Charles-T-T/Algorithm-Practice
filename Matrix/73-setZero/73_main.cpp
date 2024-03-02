@@ -24,27 +24,49 @@ public:
     void setZeroes(vector<vector<int>> &matrix)
     {
         // 思路：先找到初始状态下的零的位置，再置零
-        unordered_set<int> zeroRow, zeroCol;
-        for (int i = 0; i < matrix.size(); i++)
+        // 优化空间复杂度：直接用第一行、列来标记零的位置
+        int rowCount = matrix.size(), colCount = matrix[0].size();
+        int row0Flag = 0, col0Flag = 0; // 标记第一行、列有没有零
+        for (int i = 0; i < rowCount; i++)
         {
-            for (int j = 0; j < matrix[0].size(); j++)
+            if (!matrix[i][0])
             {
-                if (matrix[i][j] == 0)
-                {
-                    zeroRow.insert(i), zeroCol.insert(j);
-                    continue;
-                }
+                col0Flag = 1;
+                break;
+            }
+        }
+        for (int j = 0; j < colCount; j++){
+            if (!matrix[0][j])
+            {
+                row0Flag = 1;
+                break;
             }
         }
 
-        for (const int &row : zeroRow)
-            fill(matrix[row].begin(), matrix[row].end(), 0);
-
-        for (const int& col : zeroCol){
-            for (int i = 0; i < matrix.size(); i++)
-            {
-                matrix[i][col] = 0;
+        // 标记其余行列的零位
+        for (int i = 0; i < rowCount; i++){
+            for (int j = 0; j < colCount; j++){
+                if (!matrix[i][j])
+                    matrix[0][j] = matrix[i][0] = 0;
             }
+        }
+
+        // 填充零
+        for (int i = 1; i < rowCount; i++)
+        {
+            for (int j = 1; j < colCount; j++)
+            {
+                if (!matrix[i][0] || !matrix[0][j])
+                    matrix[i][j] = 0;
+            }
+        }
+
+        if (row0Flag)
+            fill(matrix[0].begin(), matrix[0].end(), 0);
+
+        if(col0Flag){
+            for (int i = 0; i < rowCount; i++)
+                matrix[i][0] = 0;
         }
     }
 };
