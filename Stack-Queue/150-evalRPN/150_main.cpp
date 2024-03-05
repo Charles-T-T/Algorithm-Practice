@@ -3,6 +3,7 @@
 #include <stack>
 #include <string>
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -50,18 +51,16 @@ public:
   {
     // 思路：用两个栈分别存储数字和算符
     stack<int> numStack;
-    int num, num1, num2, res;
+    vector<string> opVec = {"+", "-", "*", "/"};
+    long long num1, num2, res;
 
     for (const string &token : tokens)
     {
-      try
-      {
-        // 当前字符为数字：直接入数字栈
-        num = stoi(token);
-        numStack.push(num);
-      }
-      catch (...)
-      {
+      // 当前字符为数字：直接入数字栈
+      if (find(opVec.begin(), opVec.end(), token) == opVec.end())
+        numStack.push(stoll(token));
+
+      else{
         // 当前字符为算符：数字栈顶上两个数字做运算
         num1 = numStack.top();
         numStack.pop();
