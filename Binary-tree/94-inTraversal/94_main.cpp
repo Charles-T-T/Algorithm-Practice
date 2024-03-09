@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -45,12 +46,44 @@ private:
 public:
     vector<int> inorderTraversal(TreeNode *root)
     {
+        // 递归法
         if (root == nullptr)
             return resVec;
 
         inorderTraversal(root->left);
         resVec.push_back(root->val);
         inorderTraversal(root->right);
+
+        return resVec;
+    }
+
+    vector<int> inorderTraversal_II(TreeNode *root)
+    {
+        /**
+         * 采用迭代法
+         * 用栈实现
+        */
+        if (root == nullptr)
+            return resVec;
+
+        stack<TreeNode *> nodeStack;
+        TreeNode *curNode = root;
+
+        while (curNode || !nodeStack.empty())
+        {
+            if (curNode) // 找到当前节点的最左子节点
+            {
+                nodeStack.push(curNode);
+                curNode = curNode->left;
+            }
+            else
+            {
+                curNode = nodeStack.top();
+                nodeStack.pop();
+                resVec.push_back(curNode->val); // 根节点
+                curNode = curNode->right; // 右孩子
+            }
+        }
 
         return resVec;
     }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -45,12 +46,42 @@ private:
 public:
     vector<int> preorderTraversal(TreeNode *root)
     {
+        // 递归法
         if (root == nullptr)
             return resVec;
 
         resVec.push_back(root->val);
         preorderTraversal(root->left);
         preorderTraversal(root->right);
+
+        return resVec;
+    }
+
+    vector<int> preorderTraversal_II(TreeNode *root)
+    {
+        /**
+         * 迭代法
+         * 思路：用栈模拟
+         * 根据栈的特性，要得到“（中）左右”的前序遍历顺序
+         * 则应该按照“（中）右左”的顺序入栈
+        */
+        if (root == nullptr)
+            return resVec;
+
+        stack<TreeNode*> nodeStack;
+        TreeNode *curNode;
+        nodeStack.push(root);
+        while (!nodeStack.empty())
+        {
+            curNode = nodeStack.top();
+            nodeStack.pop();
+            resVec.push_back(curNode->val);
+
+            if (curNode->right)
+                nodeStack.push(curNode->right);
+            if (curNode->left)
+                nodeStack.push(curNode->left);
+        }
 
         return resVec;
     }

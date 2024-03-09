@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <stack>
+#include <algorithm>
 
 using namespace std;
 
@@ -45,12 +47,43 @@ private:
 public:
     vector<int> postorderTraversal(TreeNode *root)
     {
+        // 递归法
         if (root == nullptr)
             return resVec;
         
         postorderTraversal(root->left);
         postorderTraversal(root->right);
         resVec.push_back(root->val);
+
+        return resVec;
+    }
+
+    vector<int> postorderTraversal_II(TreeNode *root)
+    {
+        /**
+         * 迭代法
+         * 参考Q144，但是修改一些顺序
+        */
+        if (!root)
+            return resVec;
+        
+        stack<TreeNode *> nodeStack;
+        TreeNode *curNode;
+
+        nodeStack.push(root);
+        while (!nodeStack.empty())
+        {
+            curNode = nodeStack.top();
+            resVec.push_back(curNode->val);
+            nodeStack.pop();
+            
+            if (curNode->left)
+                nodeStack.push(curNode->left);
+
+            if (curNode->right)
+                nodeStack.push(curNode->right);                
+        }
+        reverse(resVec.begin(), resVec.end());
 
         return resVec;
     }
