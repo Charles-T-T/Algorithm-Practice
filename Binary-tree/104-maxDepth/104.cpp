@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <stack>
+#include <unordered_map>
 
 using namespace std;
 
@@ -42,5 +43,46 @@ public:
         TreeNode *leftSub = root->left;
         TreeNode *rightSub = root->right;
         return max(maxDepth(leftSub), maxDepth(rightSub)) + 1;
+    }
+
+    int maxDepthII(TreeNode *root){
+        /**
+         * 非递归
+         * 利用栈实现
+         * 入栈：深度++
+         * 出栈：深度--
+        */
+        if (!root)
+            return 0;
+        
+        stack<TreeNode *> nodeStack;
+        TreeNode *curNode = root;
+        int curDepth = 1, maxDepth = 1;
+        unordered_map<TreeNode *, int> visited;
+
+        nodeStack.push(root);
+        visited[root] = 1;
+        while (!nodeStack.empty())
+        {
+            curNode = nodeStack.top();
+            if (curNode->left && !visited[curNode->left])
+            {
+                nodeStack.push(curNode->left);
+                visited[curNode->left] = 1;
+                maxDepth = max(++curDepth, maxDepth);
+                continue;
+            }
+            if (curNode->right && !visited[curNode->right])
+            {
+                nodeStack.push(curNode->right);
+                visited[curNode->right] = 1;
+                maxDepth = max(++curDepth, maxDepth);
+                continue;
+            }
+            nodeStack.pop();
+            maxDepth = max(--curDepth, maxDepth);
+        }
+
+        return maxDepth;
     }
 };
