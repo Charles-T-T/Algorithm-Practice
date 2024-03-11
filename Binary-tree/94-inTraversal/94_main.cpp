@@ -87,4 +87,48 @@ public:
 
         return resVec;
     }
+
+    vector<int> inorderTraversal_III(TreeNode *root)
+    {
+        /**
+         * 采用统一的迭代法
+         * 仍用栈实现，但是用nullptr作为标记
+         * 记录访问了但是尚未加入答案的节点
+         */
+        if (root == nullptr)
+            return resVec;
+
+        stack<TreeNode *> nodeStack;
+        TreeNode *curNode;
+
+        nodeStack.push(root);
+        while (!nodeStack.empty())
+        {
+            curNode = nodeStack.top();
+            if (curNode)
+            {
+                /**
+                 * 中序遍历顺序为“左中右”
+                 * 所以入栈顺序应为“右中左”
+                */
+                nodeStack.pop();
+                if (curNode->right) // 右节点（有的话）入栈
+                    nodeStack.push(curNode->right);
+
+                nodeStack.push(curNode);
+                nodeStack.push(nullptr); // 中节点入栈，并用nullptr标记
+                if (curNode->left)       // 左节点（有的话）入栈
+                    nodeStack.push(curNode->left); 
+            }
+            else
+            {
+                // 遇到空节点，说明可以将上一个节点加入答案了
+                nodeStack.pop(); // 弹出空节点
+                resVec.push_back(nodeStack.top()->val);
+                nodeStack.pop(); // 弹出加入答案了的节点
+            }
+        }
+
+        return resVec;
+    }
 };

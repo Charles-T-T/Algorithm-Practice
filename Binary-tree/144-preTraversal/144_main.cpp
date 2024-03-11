@@ -85,4 +85,44 @@ public:
 
         return resVec;
     }
+
+    vector<int> preorderTraversal_III(TreeNode *root)
+    {
+        /**
+         * 统一迭代法
+         * 要得到“中左右”
+         * 则按照“右左中”入栈
+         */
+        if (root == nullptr)
+            return resVec;
+
+        stack<TreeNode *> nodeStack;
+        TreeNode *curNode;
+        nodeStack.push(root);
+        while (!nodeStack.empty())
+        {
+            curNode = nodeStack.top();
+            if (curNode)
+            {
+                nodeStack.pop();
+
+                if (curNode->right)
+                    nodeStack.push(curNode->right);
+
+                if (curNode->left)
+                    nodeStack.push(curNode->left);
+
+                nodeStack.push(curNode);
+                nodeStack.push(nullptr);
+            }
+            else
+            {
+                nodeStack.pop();
+                resVec.push_back(nodeStack.top()->val);
+                nodeStack.pop();
+            }
+        }
+
+        return resVec;
+    }
 };
