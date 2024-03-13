@@ -39,55 +39,32 @@ public:
         /**
          * 思路：用队列实现
          * 每层按照从左往右遍历，自然按照从左往右入队列
-         * 考虑使用两个队列，便于存放当前层和下一层
-         * 交替使用这两个队列实现逐层遍历
         */
         if (!root)
             return resVec;
 
-        queue<TreeNode *> qt1, qt2;
+        queue<TreeNode *> qt;
         TreeNode *curNode;
-
-        qt1.push(root);
-        // 非空队列存当前层节点，另一个队列准备存下一层节点
-        while (!qt1.empty() || !qt2.empty())
+        int curSize; // 每一层的节点数
+        qt.push(root);
+        while (!qt.empty())
         {
-            if (!qt1.empty())
+            curSize = qt.size(); // 后续qt的大小会变化，所以要先记录
+            vector<int> curLevVec; // 当前层的节点值的数组
+            for (int i = 0; i < curSize; i++)
             {
-                vector<int> curLevVec; // 存储当前层的节点值
-                while (!qt1.empty())
-                {
-                    curNode = qt1.front();
-                    curLevVec.push_back(curNode->val);
-                    qt1.pop();
+                curNode = qt.front();
+                curLevVec.push_back(curNode->val);
+                qt.pop();
 
-                    // 将下一层节点存到qt2
-                    if (curNode->left)
-                        qt2.push(curNode->left);
-                    if (curNode->right)
-                        qt2.push(curNode->right);
-                }
-                resVec.push_back(curLevVec);
+                // 左右孩子入队列
+                if (curNode->left)
+                    qt.push(curNode->left);
+                if (curNode->right)
+                    qt.push(curNode->right);
             }
-            else
-            {
-                vector<int> curLevVec; // 存储当前层的节点值
-                while (!qt2.empty())
-                {
-                    curNode = qt2.front();
-                    curLevVec.push_back(curNode->val);
-                    qt2.pop();
-
-                    // 将下一层节点存到qt1
-                    if (curNode->left)
-                        qt1.push(curNode->left);
-                    if (curNode->right)
-                        qt1.push(curNode->right);
-                }
-                resVec.push_back(curLevVec);
-            }
+            resVec.push_back(curLevVec);
         }
-        
 
         return resVec;
     }
