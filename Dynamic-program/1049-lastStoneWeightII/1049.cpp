@@ -42,9 +42,12 @@ public:
          * 目标其实是将石堆尽可能分为大小接近的两堆，然后碰撞
          * 动态规划，可转化为01背包问题
          * 总重为weight，则target = weight / 2
+         *
          * dp[j]的含义：
          * 容量为j的背包最多能装下价值（此处数值上等于重量）的物品
-         * 目标：将dp[target]
+         *
+         * 目标：
+         * 将dp[target]尽可能接近target（尽量大）
          */
         int weight = accumulate(stones.begin(), stones.end(), 0);
         int target = weight / 2;
