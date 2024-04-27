@@ -62,7 +62,7 @@
 
 ### ´úÂë£¨C++£©
 
-```
+```cpp
 class Solution
 {
 public:
