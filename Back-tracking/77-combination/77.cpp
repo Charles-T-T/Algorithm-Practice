@@ -41,6 +41,10 @@ public:
 
         for (int i = start; i <= n; i++)
         {
+            // 剪枝：还剩下的 < 还需要的，则剪枝
+            if (n - i + 1 < k - path.size())
+                break;
+                 
             path.push_back(i); // 处理
             backTracking(n, k, i + 1); // 递归
             path.pop_back(); // 回溯
@@ -53,3 +57,18 @@ public:
         return res;
     }
 };
+
+int main(){
+    int n = 4, k = 2;
+    Solution obj;
+    vector<vector<int>> res = obj.combine(4, 2);
+    for (int i = 0; i < res.size(); i++)
+    {
+        cout << "[ ";
+        for (int j = 0; j < res[0].size(); j++){
+            cout << res[i][j] << " ";
+        }
+        cout << "]" << endl;
+    }
+    return 0;
+}
