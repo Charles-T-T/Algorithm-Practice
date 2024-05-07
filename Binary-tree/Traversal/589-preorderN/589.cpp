@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -55,7 +56,7 @@ public:
             traversal(childNode);
         }
     }
-    
+
     vector<int> preorder(Node *root)
     {
         // 递归实现
@@ -64,6 +65,41 @@ public:
 
         _res.push_back(root->val);
         traversal(root);
+
+        return _res;
+    }
+
+    vector<int> preorder_II(Node *root){
+        /**
+         * 统一迭代法实现
+         * 利用栈结构
+         * 前序遍历，出栈顺序为“中左右”，则入栈顺序为“右左中”
+        */
+        if (!root)
+            return _res;
+
+        stack<Node *> nodeStack;
+        nodeStack.push(root);
+        while (!nodeStack.empty())
+        {
+            Node *curNode = nodeStack.top();
+            if (curNode){
+                nodeStack.pop();
+                if (!curNode->children.empty()){
+                    for (int i = curNode->children.size() - 1; i >= 0; i--){
+                        nodeStack.push(curNode->children[i]);
+                    }
+                }
+                nodeStack.push(curNode);
+                nodeStack.push(nullptr); // 用空节点标记
+            }
+            else{
+                // 读到空节点，说明可以开始记录结果
+                nodeStack.pop();
+                _res.push_back(nodeStack.top()->val);
+                nodeStack.pop();
+            }
+        }
 
         return _res;
     }
