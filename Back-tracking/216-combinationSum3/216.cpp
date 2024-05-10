@@ -61,6 +61,7 @@ public:
             }
             return;
         }
+        
         // ¼ôÖ¦
         if (curSum >= targetSum)
             return;
