@@ -34,4 +34,23 @@ public:
         }
         return *s.begin();
     }
+
+    // 改进版本：巧用异或运算，
+    // 把空间复杂度将为O(1)，
+    // 时间复杂度仍为O(n)但是实际速度显然会提升
+    int singleNumberPro(vector<int>& nums) {
+        int res = nums[0];
+        for (int i = 1; i < nums.size(); ++i)
+            res ^= nums[i];
+        return res;
+    }
 };
+
+int main(){
+    int a = 2, b = 3;
+    cout << "a ^ b: " << (a ^ b) << endl; // 1
+    cout << "a ^ a: " << (a ^ a) << endl; // 0
+    cout << "a ^ 0: " << (a ^ 0) << endl; // 2
+
+    return 0;
+}
