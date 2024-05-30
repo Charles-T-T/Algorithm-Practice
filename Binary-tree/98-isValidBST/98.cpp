@@ -38,7 +38,7 @@ private:
     long long maxVal = numeric_limits<long long>::max();
     long long minVal = numeric_limits<long long>::min();
 public:
-    bool Test(TreeNode *root, int maxVal, int minVal){
+    bool Test(TreeNode *root, long long maxVal, long long minVal){
         /**
          * 每个结点都应该有个上下界
          * 对于root的左孩子left，其上界就是root，下届和root的相同
@@ -59,9 +59,9 @@ public:
 };
 
 int main(){
-    TreeNode *root = new TreeNode(5);
-    root->left = new TreeNode(4);
-    root->right = new TreeNode(6, new TreeNode(3), new TreeNode(7));
+    TreeNode *root = new TreeNode(2);
+    root->left = new TreeNode(1);
+    root->right = new TreeNode(3);
 
     Solution obj;
     if (obj.isValidBST(root))
