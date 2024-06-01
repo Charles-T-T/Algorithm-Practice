@@ -30,7 +30,7 @@ struct TreeNode
 输出：1
 */
 
-class Solution {
+class Solution { // 递归方法
 public:
     int res = 0;
     int helper(TreeNode *root){
@@ -38,9 +38,12 @@ public:
         if (!root)
             return 0;
 
-        res = max(res, helper(root->left) + helper(root->right));
+        int lDepth = helper(root->left);
+        int rDepth = helper(root->right);
 
-        return max(helper(root->left), helper(root->right)) + 1;
+        res = max(res, lDepth + rDepth);
+
+        return max(lDepth, rDepth) + 1;
     }
 
     int diameterOfBinaryTree(TreeNode* root) {
