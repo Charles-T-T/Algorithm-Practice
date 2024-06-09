@@ -6,51 +6,45 @@ using namespace std;
 class Solution
 {
 public:
-    vector<int> searchRange(vector<int> &nums, int target)
-    {
-        int loc = -1; // 第一次找到target的位置（不一定是第一个/最后一个target位置）
+    int BinarySearchPro(vector<int> nums, int target, bool exact) {
+        // 改良版二分查找：保证查找到第一个target的位置
         int left = 0, right = nums.size() - 1;
         int mid;
-        vector<int> res;
         while (left <= right) {
             mid = (left + right) / 2;
-            if (nums[mid] == target) {
-                loc = mid;
-                break;
-            } 
-            if (nums[mid] < target) 
-                left = mid + 1;
-            else 
+            // 为了保证找到“第一个”target，界限应该尽量“往左收”
+            if (nums[mid] > target || (exact && nums[mid] >= target)) 
                 right = mid - 1;
+            else 
+                left = mid + 1;
         }
+        int ans = right + 1;
+        if (!exact || (ans < nums.size() && nums[ans] == target))
+            return ans;
+        else    
+            return -1;
+    }
 
-        if (loc == -1) {
-            res = {-1, -1};
-            return res;
-        }
-       
-        left = loc, right = loc;
-        int leftFlag = 1, rightFlag = 1;
-        while (leftFlag || rightFlag) {
-            if (nums[left] == target && leftFlag) left--;
-            else leftFlag = 0;
-
-            if (nums[right] == target && rightFlag) right++;
-            else rightFlag = 0;
-
-            if (left < 0) leftFlag = 0;
-            if (right >= nums.size()) rightFlag = 0;
-        }
-        
-        res = {++left, --right};
-        return res;
+    vector<int> searchRange(vector<int> &nums, int target)
+    {
+        if (nums.empty())
+            return vector<int> {-1, -1};
+        // 找到第一个target的位置和第一个(target - 1)的位置-1即可
+        int num1 = BinarySearchPro(nums, target, true);
+        if (num1 == -1)
+            return vector<int>{-1, -1};
+        int num2 = BinarySearchPro(nums, target, false) - 1;
+        if (num2 > nums.size() - 1)
+            return vector<int> {num1, (int)nums.size() - 1};
+        else
+            return vector<int> {num1, num2};
     }
 };
 
 int main() {
-    vector<int> nums = {2, 2};
+    vector<int> nums = {1, 2, 3};
     Solution obj;
-    vector<int> res = obj.searchRange(nums, 2);
+    vector<int> res = obj.searchRange(nums, 1);
     for (const int & num : res)
         cout << num << " ";
     cout << endl;
