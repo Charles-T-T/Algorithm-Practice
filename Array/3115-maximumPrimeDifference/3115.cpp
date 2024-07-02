@@ -22,10 +22,12 @@ using namespace std;
 class Solution
 {
 public:
-    bool IsPrime(int n) {
+    bool IsPrime(int n)
+    {
         if (n == 1)
             return false;
-        for (int i = 2; i < n; ++i) {
+        for (int i = 2; i < n; ++i)
+        {
             if (n % i == 0)
                 return false;
         }
@@ -37,16 +39,19 @@ public:
         int left = -1, right = -1;
         for (int i = 0, j = nums.size() - 1; i <= j;)
         {
-            if (left == -1 && IsPrime(nums[i])) {
+            if (left == -1 && IsPrime(nums[i]))
                 left = i;
-            }
-            if (right == -1 && IsPrime(nums[j])) {
+
+            if (right == -1 && IsPrime(nums[j]))
                 right = j;
-            }
+
             if (left != -1 && right != -1)
                 break;
-            if (left == -1) ++i;
-            if (right == -1) --j;
+
+            if (left == -1)
+                ++i;
+            if (right == -1)
+                --j;
         }
         return right - left;
     }
