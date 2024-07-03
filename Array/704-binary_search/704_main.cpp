@@ -1,71 +1,98 @@
 #include <iostream>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
 /*
-¸ø¶¨Ò»¸ö n ¸öÔªËØÓĞĞòµÄ£¨ÉıĞò£©ÕûĞÍÊı×é nums ºÍÒ»¸öÄ¿±êÖµ target  £¬Ğ´Ò»¸öº¯ÊıËÑË÷ nums ÖĞµÄ target£¬Èç¹ûÄ¿±êÖµ´æÔÚ·µ»ØÏÂ±ê£¬·ñÔò·µ»Ø -1¡£
+ç»™å®šä¸€ä¸ª n ä¸ªå…ƒç´ æœ‰åºçš„ï¼ˆå‡åºï¼‰æ•´å‹æ•°ç»„ nums å’Œä¸€ä¸ªç›®æ ‡å€¼ target  ï¼Œå†™ä¸€ä¸ªå‡½æ•°æœç´¢ nums ä¸­çš„ targetï¼Œå¦‚æœç›®æ ‡å€¼å­˜åœ¨è¿”å›ä¸‹æ ‡ï¼Œå¦åˆ™è¿”å› -1ã€‚
 
 
-Ê¾Àı 1:
+ç¤ºä¾‹ 1:
 
-ÊäÈë: nums = [-1,0,3,5,9,12], target = 9
-Êä³ö: 4
-½âÊÍ: 9 ³öÏÖÔÚ nums ÖĞ²¢ÇÒÏÂ±êÎª 4
-Ê¾Àı 2:
+è¾“å…¥: nums = [-1,0,3,5,9,12], target = 9
+è¾“å‡º: 4
+è§£é‡Š: 9 å‡ºç°åœ¨ nums ä¸­å¹¶ä¸”ä¸‹æ ‡ä¸º 4
+ç¤ºä¾‹ 2:
 
-ÊäÈë: nums = [-1,0,3,5,9,12], target = 2
-Êä³ö: -1
-½âÊÍ: 2 ²»´æÔÚ nums ÖĞÒò´Ë·µ»Ø -1
+è¾“å…¥: nums = [-1,0,3,5,9,12], target = 2
+è¾“å‡º: -1
+è§£é‡Š: 2 ä¸å­˜åœ¨ nums ä¸­å› æ­¤è¿”å› -1
 */
 
 class Solution
 {
 public:
+    // å·¦é—­å³é—­å†™æ³•
     int search(vector<int> &nums, int target)
     {
-        int left = 0, right = nums.size() - 1, mid; // ×óÓÒºÍÖĞ¼äÏÂ±ê
+        int left = 0, right = nums.size() - 1;
+        int middle;
         while (left <= right)
         {
-            mid = left + (right - left) / 2; // ÎªÁË·ÀÖ¹left + rightÒç³öµÄĞ´·¨£¬Êµ¼ÊµÈÍ¬ÓÚ(left + right) / 2
-            if (nums[mid] == target)
-                return mid;
-            else
+            middle = left + (right - left) / 2; // é˜²æº¢å‡ºçš„å†™æ³•
+            if (nums[middle] == target)
+                return middle;
+            if (nums[middle] < target)
             {
-                if (nums[mid] < target)
-                {
-                    left = mid + 1;
-                    continue;
-                }
-                else
-                {
-                    right = mid - 1;
-                    continue;
-                }
+                left = middle + 1;
+                continue;
+            }
+            if (nums[middle] > target)
+            {
+                right = middle - 1;
+                continue;
             }
         }
-        return -1; // numsÖĞ²»´æÔÚtarget
+        return -1; // targetä¸å­˜åœ¨äºnumsä¸­
+    }
+
+    // å·¦é—­å³å¼€å†™æ³•
+    int searchII(vector<int> &nums, int target)
+    {
+        int left = 0, right = nums.size(); // è¿™é‡Œä½“ç°äº†â€œå³å¼€â€
+        int middle;
+        while (left < right)
+        {
+            middle = left + (right - left) / 2;
+            if (nums[middle] == target)
+                return middle;
+            if (nums[middle] < target)
+            {
+                // â€œå·¦é—­â€æ„å‘³ç€ä¸ç”¨å†æ£€æŸ¥å·¦è¾¹ç•Œ
+                left = middle + 1;
+                continue;
+            }
+            if (nums[middle] > target)
+            {
+                // â€œå³å¼€â€æ„å‘³ç€è¦æ£€æŸ¥å³è¾¹ç•Œ
+                right = middle;
+                continue;
+            }
+        }
+        return -1;
     }
 };
 
 int main()
 {
     vector<int> nums;
-    int target, size, num;
+    int target;
     cout << "please input the target: ";
     cin >> target;
-    cout << "please input the size of nums: ";
-    cin >> size;
+    cin.ignore();
+
+    string input;
     cout << "please input the nums, divided by space: ";
-    int i = 0;
-    while (i < size)
+    getline(cin, input);
+    stringstream ss(input);
+    int num;
+    while (ss >> num)
     {
-        cin >> num;
         nums.push_back(num);
-        i++;
     }
 
-    Solution solution;
-    cout << "location: " << solution.search(nums, target);
+    Solution obj;
+    cout << "location: " << obj.search(nums, target);
     return 0;
 }
