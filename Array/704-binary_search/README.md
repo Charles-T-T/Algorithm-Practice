@@ -55,7 +55,7 @@
 - 当 `nums[middle] < target` 时，说明 `target` 在右半区间，更新 `left` 为 `middle + 1` （“左闭”，故可以不检查 `middle` ，即不用只让 `left = middle` ）
 - 当 `nums[middle] > target` 时，说明 `target` 在左半区间，更新 `right` 为 `middle - 1` （同上）
 
-#### 代码（c++）
+#### 代码
 
 ```c++
 int search(vector<int> &nums, int target)
