@@ -4,3 +4,5 @@ cppBagu/
 Markdown/
 
 *.exe
+
+/README.md

@@ -1,85 +1,61 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 
 using namespace std;
 
 /*
-¸ø¶¨Ò»¸öº¬ÓĞ n ¸öÕıÕûÊıµÄÊı×éºÍÒ»¸öÕıÕûÊı target ¡£
+ç»™å®šä¸€ä¸ªå«æœ‰ n ä¸ªæ­£æ•´æ•°çš„æ•°ç»„å’Œä¸€ä¸ªæ­£æ•´æ•° target ã€‚
 
-ÕÒ³ö¸ÃÊı×éÖĞÂú×ãÆä×ÜºÍ´óÓÚµÈÓÚ target µÄ³¤¶È×îĞ¡µÄ Á¬Ğø×ÓÊı×é [numsl, numsl+1, ..., numsr-1, numsr] £¬²¢·µ»ØÆä³¤¶È¡£Èç¹û²»´æÔÚ·ûºÏÌõ¼şµÄ×ÓÊı×é£¬·µ»Ø 0 ¡£
+æ‰¾å‡ºè¯¥æ•°ç»„ä¸­æ»¡è¶³å…¶æ€»å’Œå¤§äºç­‰äº target çš„é•¿åº¦æœ€å°çš„ è¿ç»­å­æ•°ç»„ [numsl, numsl+1, ..., numsr-1, numsr] ï¼Œå¹¶è¿”å›å…¶é•¿åº¦ã€‚å¦‚æœä¸å­˜åœ¨ç¬¦åˆæ¡ä»¶çš„å­æ•°ç»„ï¼Œè¿”å› 0 ã€‚
 
 
 
-Ê¾Àı 1£º
+ç¤ºä¾‹ 1ï¼š
 
-ÊäÈë£ºtarget = 7, nums = [2,3,1,2,4,3]
-Êä³ö£º2
-½âÊÍ£º×ÓÊı×é [4,3] ÊÇ¸ÃÌõ¼şÏÂµÄ³¤¶È×îĞ¡µÄ×ÓÊı×é¡£
-Ê¾Àı 2£º
+è¾“å…¥ï¼štarget = 7, nums = [2,3,1,2,4,3]
+è¾“å‡ºï¼š2
+è§£é‡Šï¼šå­æ•°ç»„ [4,3] æ˜¯è¯¥æ¡ä»¶ä¸‹çš„é•¿åº¦æœ€å°çš„å­æ•°ç»„ã€‚
+ç¤ºä¾‹ 2ï¼š
 
-ÊäÈë£ºtarget = 4, nums = [1,4,4]
-Êä³ö£º1
-Ê¾Àı 3£º
+è¾“å…¥ï¼štarget = 4, nums = [1,4,4]
+è¾“å‡ºï¼š1
+ç¤ºä¾‹ 3ï¼š
 
-ÊäÈë£ºtarget = 11, nums = [1,1,1,1,1,1,1,1]
-Êä³ö£º0
+è¾“å…¥ï¼štarget = 11, nums = [1,1,1,1,1,1,1,1]
+è¾“å‡ºï¼š0
 */
 class Solution
 {
 public:
-    int minSubArrayLen1(int target, vector<int> &nums)
+    int minSubArrayLen(int target, vector<int> &nums)
     {
-        // Ë¼Â·£ºË«Ö¸Õë
-        int left = 0, right = 0;
-        int sum = nums[left];
-
-        // Èç¹ûµÚÒ»¸ö¾Í>=target
-        if (sum >= target)
-            return 1;
-
-        while (sum < target && right < nums.size() - 1)
-            sum += nums[++right];
-
-        // Èç¹ûÕû¸önums¼ÓÆğÀ´Ò²Ã»ÓĞtarget´ó
-        if (sum < target)
-            return 0;
-
-        // µ½ÕâÀïÔòËµÃ÷´æÔÚ·ûºÏÌõ¼şµÄ²»Îª0µÄlength
-        while (right < nums.size() - 1)
+        // æ€è·¯ï¼šé‡‡ç”¨å¿«æ…¢åŒæŒ‡é’ˆï¼Œæ„æˆä¸€ä¸ªæ»‘åŠ¨çª—å£ï¼ŒåŠ¨æ€æ›´æ–°æœ€çŸ­é•¿åº¦
+        int slow = 0, fast = 0;
+        const int MAX = numeric_limits<int>::max();
+        int minLen = MAX;
+        int curSum = nums[fast];
+        while (1)
         {
-            sum = sum + nums[++right] - nums[left++];
-            while (sum > target)
+            if (curSum >= target)
             {
-                // ¿ÉÒÔ³¢ÊÔ£¨´Ó×ó±ß£©ËõĞ¡×ÓÊı×é³¤¶È
-                sum -= nums[left];
-                if (sum >= target)
-                {
-                    left++;
-                    continue;
-                }
-                sum += nums[left];
-                break;
+                minLen = min(minLen, fast - slow + 1);
+                curSum -= nums[slow];
+                slow++;
+            }
+            else
+            {
+                fast++;
+                if (fast >= nums.size())
+                    break;
+                curSum += nums[fast];
             }
         }
-
-        while (sum > target)
-        {
-            // ¿ÉÒÔ³¢ÊÔ£¨´Ó×ó±ß£©ËõĞ¡×ÓÊı×é³¤¶È
-            sum -= nums[left];
-            if (sum >= target)
-            {
-                left++;
-                continue;
-            }
-            sum += nums[left];
-            break;
-        }
-
-        return right - left + 1;
+        return minLen == MAX ? 0 : minLen;
     }
 
     // Carl's version
-    int minSubArrayLen2(int target, vector<int> &nums)
+    int minSubArrayLen_Carl(int target, vector<int> &nums)
     {
         int left = 0, right = 0;
         int length = 1e6;
@@ -99,26 +75,3 @@ public:
         return length == 1e6 ? 0 : length;
     }
 };
-
-int main()
-{
-    vector<int> nums;
-    int target, n;
-    cout << "please input the target: ";
-    cin >> target;
-    cout << "please input the length of nums: ";
-    cin >> n;
-
-    int num;
-    cout << "please input the nums, divided by space:" << endl;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> num;
-        nums.push_back(num);
-    }
-
-    Solution obj;
-    cout << "Result: " << obj.minSubArrayLen1(target, nums) << endl;
-
-    return 0;
-}

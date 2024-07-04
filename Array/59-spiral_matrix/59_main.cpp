@@ -4,15 +4,15 @@
 using namespace std;
 
 /*
-¸øÄãÒ»¸öÕıÕûÊı n £¬Éú³ÉÒ»¸ö°üº¬ 1 µ½ n^2 ËùÓĞÔªËØ£¬ÇÒÔªËØ°´Ë³Ê±ÕëË³ĞòÂİĞıÅÅÁĞµÄ n x n Õı·½ĞÎ¾ØÕó matrix ¡£
+ç»™ä½ ä¸€ä¸ªæ­£æ•´æ•° n ï¼Œç”Ÿæˆä¸€ä¸ªåŒ…å« 1 åˆ° n^2 æ‰€æœ‰å…ƒç´ ï¼Œä¸”å…ƒç´ æŒ‰é¡ºæ—¶é’ˆé¡ºåºèºæ—‹æ’åˆ—çš„ n x n æ­£æ–¹å½¢çŸ©é˜µ matrix ã€‚
 
-Ê¾Àı 1£º
-ÊäÈë£ºn = 3
-Êä³ö£º[[1,2,3],[8,9,4],[7,6,5]]
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šn = 3
+è¾“å‡ºï¼š[[1,2,3],[8,9,4],[7,6,5]]
 
-Ê¾Àı 2£º
-ÊäÈë£ºn = 1
-Êä³ö£º[[1]]
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥ï¼šn = 1
+è¾“å‡ºï¼š[[1]]
 */
 
 class Solution
@@ -20,30 +20,31 @@ class Solution
 public:
     vector<vector<int>> generateMatrix(int n)
     {
-        int len = n - 1; // ËÄ¸ö·½ÏòÉÏ£¨×î³õ£©Ã¿´Î×ßµÄ³¤¶È
-        int loopTime = n / 2 + 1; // ×ÜÑ­»·´ÎÊı
-        int num = 1; // ÌîÈë¾ØÕóµÄÊı×Ö
+        int len = n - 1;          // å››ä¸ªæ–¹å‘ä¸Šï¼ˆæœ€åˆï¼‰æ¯æ¬¡èµ°çš„é•¿åº¦
+        int loopTime = n / 2 + 1; // æ€»å¾ªç¯æ¬¡æ•°
+        int num = 1;              // å¡«å…¥çŸ©é˜µçš„æ•°å­—
         int start = 0;
         vector<vector<int>> res(n, vector<int>(n));
 
-        for (int loopCount = 0; loopCount < loopTime; loopCount++){
-            // ´¦ÀínÎªÆæÊıÊ±µÄ×îºóÒ»¸öÖĞĞÄÊı×Ö
+        for (int loopCount = 0; loopCount < loopTime; loopCount++)
+        {
+            // å¤„ç†nä¸ºå¥‡æ•°æ—¶çš„æœ€åä¸€ä¸ªä¸­å¿ƒæ•°å­—
             if (loopCount == loopTime - 1 && n % 2 != 0)
             {
                 res[loopCount][loopCount] = n * n;
                 break;
             }
-            
-            for (int i = start, j = 0; j < len; i++, j++, num++) // ÉÏĞĞ
+
+            for (int i = start, j = 0; j < len; i++, j++, num++) // ä¸Šè¡Œ
                 res[loopCount][i] = num;
 
-            for (int i = start, j = 0; j < len; i++, j++, num++) // ÓÒÁĞ
+            for (int i = start, j = 0; j < len; i++, j++, num++) // å³åˆ—
                 res[i][n - loopCount - 1] = num;
 
-            for (int i = n - start - 1, j = 0; j < len; i--, j++, num++) // ÏÂĞĞ
+            for (int i = n - start - 1, j = 0; j < len; i--, j++, num++) // ä¸‹è¡Œ
                 res[n - loopCount - 1][i] = num;
 
-            for (int i = n - start - 1, j = 0; j < len; i--, j++, num++) // ×óÁĞ
+            for (int i = n - start - 1, j = 0; j < len; i--, j++, num++) // å·¦åˆ—
                 res[i][loopCount] = num;
 
             len -= 2;
@@ -52,22 +53,57 @@ public:
 
         return res;
     }
+
+    // äºŒåˆ·ç‰ˆæœ¬
+    vector<vector<int>> generateMatrix_II(int n)
+    {
+        vector<vector<int>> res(n, vector<int>(n));
+        int curLayer = 0;   // å½“å‰æ­£åœ¨å¤„ç†çš„å±‚å·ï¼Œä»å¤–åˆ°å†…è®¡æ•°
+        int curSideLen = n; // å½“å‰åœ¨å¤„ç†çš„è¿™å±‚æ­£æ–¹å½¢çš„è¾¹é•¿
+        int curNum = 1;     // å½“å‰è¦å¡«å…¥çŸ©é˜µçš„æ•°å­—
+
+        // ä¸€å±‚å±‚å¤„ç†ï¼Œæ¯å±‚çš„å„æ¡è¾¹é‡‡ç”¨â€œå‰é—­åå¼€â€çš„åŸåˆ™
+        while (curSideLen > 0)
+        {
+            // å¤„ç†ä¸Šè¾¹
+            for (int j = curLayer; j < curLayer + curSideLen - 1; j++)
+                res[curLayer][j] = curNum++;
+            // å¤„ç†å³è¾¹
+            for (int i = curLayer; i < curLayer + curSideLen - 1; i++)
+                res[i][curLayer + curSideLen - 1] = curNum++;
+            // å¤„ç†ä¸‹è¾¹
+            for (int j = curLayer + curSideLen - 1; j > curLayer; j--)
+                res[curLayer + curSideLen - 1][j] = curNum++;
+            // å¤„ç†å·¦è¾¹
+            for (int i = curLayer + curSideLen - 1; i > curLayer; i--)
+                res[i][curLayer] = curNum++;
+
+            curLayer++;      // å¾€å†…å¤„ç†ä¸‹ä¸€å±‚
+            curSideLen -= 2; // ä¸‹ä¸€å±‚è¾¹é•¿å‡2
+        }
+
+        // å¦‚æœæ˜¯å¥‡æ•°é˜¶çŸ©é˜µï¼Œè¿˜è¦å¡«ä¸­å¿ƒå…ƒç´ 
+        if (n % 2 == 1)
+            res[n / 2][n / 2] = n * n;
+
+        return res;
+    }
 };
 
-
-int main(){
+int main()
+{
     int n;
     cout << "please input the n: ";
     cin >> n;
 
     vector<vector<int>> res;
     Solution obj;
-    res = obj.generateMatrix(n);
+    res = obj.generateMatrix_II(n);
     cout << "get the matrix:" << endl;
     for (int i = 0; i < res.size(); i++)
     {
         cout << "[ ";
-        for (int j = 0; j < res[0].size(); j++) 
+        for (int j = 0; j < res[0].size(); j++)
         {
             cout << res[i][j] << " ";
         }
