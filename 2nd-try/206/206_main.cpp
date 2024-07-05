@@ -16,15 +16,12 @@ class Solution
 public:
     ListNode *reverseList(ListNode *head)
     {
-        // Ë¼Â·£º±éÀú£¬ÔÚÐÂÁ´±í²ÉÓÃÍ·²å·¨µÃµ½·´×ªºóµÄÁ´±í
-        ListNode *dummyNode = new ListNode();
-        while (head)
-        {
-            ListNode *newNode = new ListNode(head->val);
-            newNode->next = dummyNode->next;
-            dummyNode->next = newNode;
+        // æ€è·¯ï¼šå¼€ä¸€ä¸ªæ–°é“¾è¡¨ï¼Œé‡‡ç”¨å¤´æ’æ³•ä¾æ¬¡æ’å…¥åŽŸæ¥é“¾è¡¨çš„èŠ‚ç‚¹
+        ListNode *dummyHead = new ListNode();
+        while (head) {
+            dummyHead->next = new ListNode(head->val, dummyHead->next);
             head = head->next;
         }
-        return dummyNode->next;
+        return dummyHead->next;
     }
 };
