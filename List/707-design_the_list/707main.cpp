@@ -5,7 +5,7 @@ using namespace std;
 class MyLinkedList
 {
 public:
-    // ¶¨ÒåÁ´±í½Úµã
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
     struct ListNode
     {
         int val;
@@ -17,16 +17,16 @@ public:
 
     MyLinkedList()
     {
-        dummyNode = new ListNode(0);
+        dummyHead = new ListNode(0);
         size = 0;
     }
 
     int get(int index)
     {
         if (index >= size || index < 0)
-            return -1; // ÏÂ±êÎÞÐ§£¬·µ»Ø-1
+            return -1; // ï¿½Â±ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-1
 
-        ListNode *cur = dummyNode;
+        ListNode *cur = dummyHead;
         while (index--)
         {
             cur = cur->next;
@@ -37,17 +37,17 @@ public:
     void addAtHead(int val)
     {
         ListNode *newNode = new ListNode(val);
-        newNode->next = dummyNode->next;
-        dummyNode->next = newNode;
+        newNode->next = dummyHead->next;
+        dummyHead->next = newNode;
         size++;
     }
 
     void addAtTail(int val)
     {
         ListNode *newNode = new ListNode(val);
-        ListNode *cur = dummyNode->next;
+        ListNode *cur = dummyHead->next;
         if (cur == nullptr)
-            dummyNode->next = newNode;
+            dummyHead->next = newNode;
         else
         {
             while (cur->next)
@@ -61,12 +61,12 @@ public:
     {
 
         if (index == size)
-            addAtTail(val); // indexµÈÓÚÁ´±í³¤¶È£¬Ö±½Ó¼Óµ½Ä©Î²
+            addAtTail(val); // indexï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½Ö±ï¿½Ó¼Óµï¿½Ä©Î²
         else if (index <= 0)
-            addAtHead(val); // indexÎª0£¬Ö±½Ó¼Óµ½¿ªÍ·
+            addAtHead(val); // indexÎª0ï¿½ï¿½Ö±ï¿½Ó¼Óµï¿½ï¿½ï¿½Í·
         else if (index < size)
         {
-            ListNode *cur = dummyNode->next;
+            ListNode *cur = dummyHead->next;
             int i = 0;
             while (cur && i < index - 1)
             {
@@ -88,7 +88,7 @@ public:
             return;
         else
         {
-            ListNode *cur = dummyNode;
+            ListNode *cur = dummyHead;
             while (index--)
             {
                 cur = cur->next;
@@ -103,7 +103,7 @@ public:
 
     void printList()
     {
-        ListNode *cur = dummyNode->next;
+        ListNode *cur = dummyHead->next;
         cout << "[ ";
         while (cur)
         {
@@ -119,7 +119,7 @@ public:
     }
 
 private:
-    ListNode *dummyNode;
+    ListNode *dummyHead;
     int size;
 };
 
