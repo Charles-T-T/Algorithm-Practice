@@ -3,21 +3,6 @@
 
 using namespace std;
 
-/*
-给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
-
-示例 1：
-输入：head = [1,2,3,4,5], n = 2
-输出：[1,2,3,5]
-
-示例 2：
-输入：head = [1], n = 1
-输出：[]
-
-示例 3：
-输入：head = [1,2], n = 1
-输出：[1]
-*/
 
 struct ListNode
 {
@@ -33,23 +18,17 @@ class Solution
 public:
     ListNode *removeNthFromEnd(ListNode *head, int n)
     {
-        // 思路：用两个指针，间隔n个结点，第一个结点在前面“探路”
-        ListNode *dummyNode = new ListNode(0, head);
-        ListNode *ahead = dummyNode;
-        ListNode *later = dummyNode;
-
-        for (int i = 0; i < n; i++)
-        {
-            ahead = ahead->next;
+        // 鎬濊矾锛氬弻鎸囬拡锛屽揩鎸囬拡鍏堣蛋 n + 1 姝ワ紝鐒跺悗蹇參鎸囬拡涓�璧疯蛋
+        // 蹇寚閽堣蛋鍒伴摼琛ㄦ湯灏剧┖鎸囬拡澶勬椂锛屾參鎸囬拡鎭板ソ浣嶄簬鍊掓暟绗琻涓妭鐐圭殑鍓嶉┍
+        ListNode *dummyHead = new ListNode(0, head);
+        ListNode *fast = dummyHead, *slow = dummyHead;
+        for (int i = 0; i < n + 1; i++)
+            fast = fast->next;
+        while (fast) {
+            slow = slow->next;
+            fast = fast->next;
         }
-
-        while (ahead->next)
-        {
-            ahead = ahead->next;
-            later = later->next;
-        }
-
-        later->next = later->next->next;
-        return dummyNode->next;
+        slow->next = slow->next->next;
+        return dummyHead->next;
     }
 };
