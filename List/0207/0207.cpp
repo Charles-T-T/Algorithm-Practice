@@ -58,23 +58,62 @@ struct ListNode
 class Solution
 {
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+    // 用一个节点集合无脑解决
+    ListNode *getIntersectionNode_BySet(ListNode *headA, ListNode *headB)
     {
         // 用一个set存储a链节点
-        set<ListNode*> nodeSet;
-        while (headA || headB) {
-            if (headA) {
+        set<ListNode *> nodeSet;
+        while (headA || headB)
+        {
+            if (headA)
+            {
                 if (nodeSet.find(headA) != nodeSet.end())
                     return headA;
                 nodeSet.insert(headA);
                 headA = headA->next;
             }
-            if (headB) { // 检查b链节点是否已在集合（a链）中出现过
+            if (headB)
+            { // 检查b链节点是否已在集合（a链）中出现过
                 if (nodeSet.find(headB) != nodeSet.end())
                     return headB;
-                    nodeSet.insert(headB);
+                nodeSet.insert(headB);
                 headB = headB->next;
             }
+        }
+        return nullptr;
+    }
+
+    // 不用其他容器
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB)
+    {
+        // 先找出长链
+        ListNode *curA = headA, *curB = headB;
+        int lenA = 0, lenB = 0;
+        while (curA) {
+            lenA++;
+            curA = curA->next;
+        }
+        while (curB) {
+            lenB++;
+            curB = curB->next;
+        }
+        // 将两条链的尾端对齐（方法：长链指针先走 长度差 个节点）
+        curA = headA, curB = headB;
+        if (lenA > lenB) {
+            int dist = lenA - lenB;
+            for (int i = 0; i < dist; i++)
+                curA = curA->next;
+        } else {
+            int dist = lenB - lenA;
+            for (int i = 0; i < dist; i++)
+                curB = curB->next;
+        }
+        // 开始检查有无相同节点
+        while (curA && curB)
+        {
+            if (curA == curB)
+                return curA;
+            curA = curA->next, curB = curB->next;
         }
         return nullptr;
     }
