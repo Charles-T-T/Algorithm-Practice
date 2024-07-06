@@ -1,4 +1,4 @@
-# :notebook_with_decorative_cover: Charles__T_T的算法刷题本 :calendar: ​
+# :notebook_with_decorative_cover: Charles_T_T的算法刷题本 :calendar: ​
 
 ## 简介 
 
