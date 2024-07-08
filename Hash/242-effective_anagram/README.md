@@ -1,10 +1,12 @@
 # 242. 有效的字母异位词
 
+[点此跳转题目链接](https://leetcode.cn/problems/valid-anagram/submissions/545086706/)
+
 ## 题目描述
 
 给定两个字符串 `s` 和 `t` ，编写一个函数来判断 `t` 是否是 `s` 的字母异位词。
 
-**注意：**若 `s` 和 `t` 中每个字符出现的次数都相同，则称 `s` 和 `t` 互为字母异位词。
+**注意：** 若 `s` 和 `t` 中每个字符出现的次数都相同，则称 `s` 和 `t` 互为字母异位词。
 
  
 
@@ -57,7 +59,7 @@ bool isAnagram(string s, string t)
 
 有关哈希表基础可参见 [代码随想录 (programmercarl.com)](https://programmercarl.com/哈希表理论基础.html) 。
 
-不过这题有个神奇解法：既然都是字符串，直接按字典序重排一遍，在比较重排后的字符串即可 :laughing: 
+不过这题有个神奇解法：既然都是字符串，直接按字典序重排一遍，再比较重排后的字符串即可 :laughing: 
 
 ```cpp
 bool isAnagram(string s, string t)
