@@ -37,7 +37,6 @@
   - [59. 螺旋矩阵 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/59-spiral_matrix)
   - [704. 二分查找](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/704-binary_search)
   - [977. 有序数组的平方](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/977-sorted_array_square)
-
 - **List**
   - [19. 删除链表的倒数第N个节点](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/19-delete_the_last_Nth_node)
   - [24. 两两交换链表中的节点](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/24)
@@ -46,6 +45,12 @@
   - [206. 反转链表](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/206)
   - [707. 设计链表](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/707)
   - [面试题 02.07. 链表相交](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/0207-getIntersectionNode)
+- **Hash**
+  - [1. 两数之和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/1)
+  - [202. 快乐数](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/202)
+  - [242. 有效的字母异位词](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Hash/242-effective_anagram)
+  - [349. 两个数组的交集](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/349)
+
 
 
 
