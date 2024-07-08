@@ -1,35 +1,33 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace std;
-
-/*
-给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
-
-注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和 t 互为字母异位词。
-
-
-示例 1:
-输入: s = "anagram", t = "nagaram"
-输出: true
-
-示例 2:
-输入: s = "rat", t = "car"
-输出: false
-*/
 
 class Solution
 {
 public:
     bool isAnagram(string s, string t)
     {
-        
+        if (s.length() != t.length()) // 涓嶇瓑闀胯偗瀹氫笉鏄瓧姣嶅紓浣嶈瘝
+            return false;
+        unordered_map<char, int> sMap, tMap;
+        for (int i = 0; i < s.length(); i++)
+            sMap[s[i]]++, tMap[t[i]]++;
+        for (auto pair : sMap)
+        {
+            if (pair.second != tMap[pair.first])
+                return false;
+        }
+        return true;
+    }
+
+    bool isAnagram_II(string s, string t)
+    {
+        // 鏃侀棬宸﹂亾锛坉oge
         sort(s.begin(), s.end());
         sort(t.begin(), t.end());
-        if (s == t)
-            return true;
-        else
-            return false;
+        return s == t;
     }
 };
