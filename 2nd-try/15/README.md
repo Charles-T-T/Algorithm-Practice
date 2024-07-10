@@ -54,9 +54,9 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
 
 > 今天最恶心的一道题目 :upside_down_face: 
 >
-> <div style="text-align: right;">
+> <p align="right">
 > ——2024/7/10
-> </div>
+> </p>
 
 首先好好读题，可以发现要找的三元组涉及两个 **“去重”** 问题：
 
