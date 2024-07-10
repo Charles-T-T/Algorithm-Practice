@@ -30,12 +30,12 @@ public:
     {
         // 思路：哈希表 + 分治
         int count = 0;
-        unordered_map<int, int> sumMap; // 存储前两个数 a + b 各种求和结果出现的次数
+        unordered_map<int, int> sumMap; // 存储前两个数a + b各种求和结果出现的次数
         for (int a : nums1) {
             for (int b : nums2)
                 sumMap[a + b]++;
         }
-        // 根据后两个数的和 c + d ，找凑成0所需的差 -(c + d) 是否能由之前的 a + b 得出
+        // 根据后两个数的和c + d，找凑成0所需的差-(c + d)是否能由之前的a + b得出
         for (int c : nums3) {
             for (int d : nums4)
                 count += sumMap[- c - d];
