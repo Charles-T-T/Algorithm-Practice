@@ -28,31 +28,40 @@
 
 ## 题解笔记
 
-:hourglass: ​Long long time ago有过好好做刷题笔记的远大志向，但是实在费时费力，只望后续有机会再多写几篇 :facepunch: 
+:hourglass: $\mathbf{Long\enspace long\enspace time\enspace ago}$ 有过好好做刷题笔记的远大志向，但是实在费时费力，只望后续有机会再多写几篇 :facepunch: 
 
 :notebook: 目前带笔记的题目有（默认题目来源为LeetCode）：
 
-- **Array**
+- $\mathcal{Array}$  
   - [27. 移除元素](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/27-remove_the_value)
   - [59. 螺旋矩阵 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/59-spiral_matrix)
   - [704. 二分查找](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/704-binary_search)
   - [977. 有序数组的平方](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/977-sorted_array_square)
-- **List**
+- $\mathcal{List}$
   - [19. 删除链表的倒数第N个节点](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/19-delete_the_last_Nth_node)
   - [24. 两两交换链表中的节点](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/24)
-  - [142. 环形链表 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/142-list_circle_II)
+  - [142. 环形链表 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/142-list_circle_II) :star2:  ​
   - [203. 移除链表元素](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/203)
   - [206. 反转链表](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/206)
   - [707. 设计链表](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/707)
   - [面试题 02.07. 链表相交](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/0207-getIntersectionNode)
-- **Hash**
+- $\mathcal{Hash}$
   - [1. 两数之和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/1)
-  - [202. 快乐数](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/202)
+  - [202. 快乐数](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/202) :star2:  ​
   - [242. 有效的字母异位词](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Hash/242-effective_anagram)
   - [349. 两个数组的交集](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/349)
+  - [383. 赎金信](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Hash/383-canConstruct)
+  - [454. 四数相加 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Hash/454-fourSumCount)
+- $\mathcal{Two-pointer}$
+  - [11. 盛水最多的容器](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dual-pointers/11-container_with_most_water) :star2:  ​
+  - [15. 三数之和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/15) :star2: 
+  - [18. 四数之和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dual-pointers/18-fourSum)
 
 
+- $\mathcal{Greedy\enspace Algorithm}$
+  - [122. 买卖股票的最佳时机 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/122-maxProfit)
 
+<br>
 
 *:triangular_flag_on_post: （2024-暑假）立下​flag：每天坚持打卡、做笔记！！！*
 
