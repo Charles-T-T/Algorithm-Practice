@@ -52,7 +52,7 @@ public:
         vector<vector<int>> res;
         sort(nums.begin(), nums.end());
 
-        // 记目标三元组为 (a, b, c)
+        // 目标三元组为 (a, b, c)
         for (int i = 0; i < nums.size(); i++)
         {
             if (nums[i] > 0) break; // 升序排列后，第一个数a仍大于0，则三元组之和必大于0了
