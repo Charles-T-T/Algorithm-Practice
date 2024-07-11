@@ -60,6 +60,16 @@
 
 - $\mathcal{Greedy\enspace Algorithm}$
   - [122. 买卖股票的最佳时机 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/122-maxProfit)
+- $\mathcal{String}$ 
+
+  - [28. 找出字符串中第一个匹配项的下标](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/String/28-strStr) :star2: 
+  - [151. 反转字符串中的单词](https://github.com/Charles-T-T/Algorithm-Practice/blob/master/2nd-try/151/README.md) 
+  - [334. 反转字符串](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/344)
+  - [459. 重复的子字符串](https://github.com/Charles-T-T/Algorithm-Practice/blob/master/String/459-repeatedSubstrPattern/README.md) :star2:  ​
+  - [541. 反转字符串 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/541)
+  - [卡码网 54. 替换数字](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/String/kama-54-changeNums)
+  - [卡码网 55. 右旋字符串](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/String/kama-55-rightSpanStr) 
+
 
 <br>
 
