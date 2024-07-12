@@ -69,6 +69,12 @@
   - [541. 反转字符串 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/541)
   - [卡码网 54. 替换数字](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/String/kama-54-changeNums)
   - [卡码网 55. 右旋字符串](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/String/kama-55-rightSpanStr) 
+- $\mathcal{Stack\enspace and\enspace Queue}$
+
+  - [20. 有效的括号](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/20) :star2:  ​
+  - [225. 用队列实现栈](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Stack-Queue/225-MyStack)
+  - [232. 用栈实现队列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Stack-Queue/232-MyQueue)
+  - [1047. 删除字符串中的所有相邻元素](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/1047)
 
 
 <br>
