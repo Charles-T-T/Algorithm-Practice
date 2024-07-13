@@ -60,6 +60,7 @@
 
 - $\mathcal{Greedy\enspace Algorithm}$
   - [122. 买卖股票的最佳时机 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/122-maxProfit)
+  
 - $\mathcal{String}$ 
 
   - [28. 找出字符串中第一个匹配项的下标](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/String/28-strStr) :star2: 
@@ -69,12 +70,18 @@
   - [541. 反转字符串 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/541)
   - [卡码网 54. 替换数字](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/String/kama-54-changeNums)
   - [卡码网 55. 右旋字符串](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/String/kama-55-rightSpanStr) 
+  
 - $\mathcal{Stack\enspace and\enspace Queue}$
 
   - [20. 有效的括号](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/20) :star2:  ​
+  - [150. 逆波兰表达式求值](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/150)
   - [225. 用队列实现栈](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Stack-Queue/225-MyStack)
   - [232. 用栈实现队列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Stack-Queue/232-MyQueue)
+  - [239. 滑动窗口最大值](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Stack-Queue/239-maxSlidingWindow) :star2: 
+  - [347. 前K个高频元素](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Stack-Queue/347-topKFrequent)
   - [1047. 删除字符串中的所有相邻元素](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/1047)
+  
+  
 
 
 <br>
