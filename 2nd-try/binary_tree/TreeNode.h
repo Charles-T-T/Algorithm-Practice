@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <sstream>
 #include <deque>
+#include <climits>
+#include <unordered_map>
 
 using namespace std;
 
