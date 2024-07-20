@@ -48,7 +48,7 @@ public:
 
 int main()
 {
-    TreeNode *root = getRoot("4,2,7,1,3,6,9");
+    TreeNode *root = getRootFromStr("4,2,7,1,3,6,9");
     Solution obj;
     TreeNode *newRoot = obj.invertTree_II(root);
     showTree(newRoot);

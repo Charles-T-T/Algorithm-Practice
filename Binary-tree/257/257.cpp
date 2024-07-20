@@ -124,7 +124,7 @@ public:
 
 int main()
 {
-    TreeNode *root = getRoot("1,2,3,null,5");
+    TreeNode *root = getRootFromStr("1,2,3,null,5");
     Solution obj;
     vector<string> res = obj.binaryTreePaths_II(root);
     for (auto str : res)

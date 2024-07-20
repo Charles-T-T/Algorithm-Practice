@@ -41,33 +41,39 @@ public:
     }
 
     // 迭代法
-    bool hasPathSum_II(TreeNode *root, int targetSum) {
+    bool hasPathSum_II(TreeNode *root, int targetSum)
+    {
         // 基于前序遍历的统一迭代法实现
         if (!root)
             return false;
-        stack<TreeNode*> nodeSt;
+        stack<TreeNode *> nodeSt;
         nodeSt.push(root);
         stack<int> sumSt;
         sumSt.push(root->val);
-        while (!nodeSt.empty()) {
+        while (!nodeSt.empty())
+        {
             TreeNode *node = nodeSt.top();
             nodeSt.pop();
-            int sum = sumSt.top(); 
+            int sum = sumSt.top();
             sumSt.pop();
-            if (node) {
-                if (node->right) {
+            if (node)
+            {
+                if (node->right)
+                {
                     nodeSt.push(node->right); // 右
                     sumSt.push(sum + node->right->val);
                 }
-                if (node->left) {
+                if (node->left)
+                {
                     nodeSt.push(node->left); // 左
                     sumSt.push(sum + node->left->val);
                 }
-                nodeSt.push(node); // 中
+                nodeSt.push(node);    // 中
                 nodeSt.push(nullptr); // 空指针标记
                 sumSt.push(sum);
             }
-            else {
+            else
+            {
                 if (sum == targetSum && !nodeSt.top()->left && !nodeSt.top()->right)
                     return true;
                 nodeSt.pop();
@@ -77,10 +83,11 @@ public:
     }
 };
 
-int main() {
-    TreeNode *root = getRoot("1,2");
+int main()
+{
+    TreeNode *root = getRootFromStr("1,2");
     Solution obj;
     bool res = obj.hasPathSum(root, 1);
 
-    return 0; 
+    return 0;
 }

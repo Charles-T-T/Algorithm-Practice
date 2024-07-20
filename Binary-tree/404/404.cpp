@@ -30,17 +30,21 @@ public:
     }
 
     // 迭代法：基于层序遍历
-    int sumOfLeftLeaves_II(TreeNode *root) {
+    int sumOfLeftLeaves_II(TreeNode *root)
+    {
         if (!root)
             return 0;
-        queue<TreeNode*> q;
+        queue<TreeNode *> q;
         q.push(root);
         int sum = 0;
-        while (!q.empty()) {
+        while (!q.empty())
+        {
             int size = q.size();
-            for (int i = 0; i < size; ++i) {
+            for (int i = 0; i < size; ++i)
+            {
                 TreeNode *cur = q.front();
-                if (cur->left) {
+                if (cur->left)
+                {
                     q.push(cur->left);
                     if (!cur->left->left && !cur->left->right)
                         sum += cur->left->val;
@@ -54,8 +58,9 @@ public:
     }
 };
 
-int main() {
-    TreeNode *root = getRoot("1,2,3,4,5");
+int main()
+{
+    TreeNode *root = getRootFromStr("1,2,3,4,5");
     Solution obj;
     int res = obj.sumOfLeftLeaves_II(root);
     cout << res << endl;

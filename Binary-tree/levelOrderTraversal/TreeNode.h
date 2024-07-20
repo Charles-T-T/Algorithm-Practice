@@ -57,7 +57,7 @@ bool isInt(const string &str)
 /// @brief 从字符串中解析出一棵二叉树
 /// @param str
 /// @return 树根指针
-TreeNode* getRoot(string str)
+TreeNode *getRootFromStr(string str)
 {
     if (str.empty())
         return nullptr;
@@ -120,7 +120,7 @@ vector<vector<int>> levelOrder(TreeNode *root)
 }
 
 /// @brief 逐层打印树的节点值
-/// @param root 
+/// @param root
 void showTree(TreeNode *root)
 {
     vector<vector<int>> levels = levelOrder(root);

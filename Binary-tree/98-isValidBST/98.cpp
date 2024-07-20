@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include "../TreeNode.h"
 
 using namespace std;
 
@@ -55,6 +56,24 @@ public:
     bool isValidBST(TreeNode* root) {
         // 思路：递归检查，遇到不符合的直接return false
         return Test(root, maxVal, minVal);
+    }
+};
+
+// 二刷
+class Solution2
+{
+public:
+    bool testBST(TreeNode *root, long long curMax, long long curMin) {
+        if (!root)
+            return true;
+        if (root->val >= curMax || root->val <= curMin)
+            return false;
+        return testBST(root->left, root->val, curMin) && testBST(root->right, curMax, root->val);
+    }
+
+    bool isValidBST(TreeNode *root)
+    {
+        return testBST(root, LLONG_MAX, LLONG_MIN);
     }
 };
 
