@@ -4,44 +4,44 @@
 using namespace std;
 
 /*
-ÕÒ³öËùÓĞÏà¼ÓÖ®ºÍÎª n µÄ k ¸öÊıµÄ×éºÏ£¬ÇÒÂú×ãÏÂÁĞÌõ¼ş£º
+æ‰¾å‡ºæ‰€æœ‰ç›¸åŠ ä¹‹å’Œä¸º n çš„ k ä¸ªæ•°çš„ç»„åˆï¼Œä¸”æ»¡è¶³ä¸‹åˆ—æ¡ä»¶ï¼š
 
-Ö»Ê¹ÓÃÊı×Ö1µ½9
-Ã¿¸öÊı×Ö ×î¶àÊ¹ÓÃÒ»´Î
-·µ»Ø ËùÓĞ¿ÉÄÜµÄÓĞĞ§×éºÏµÄÁĞ±í ¡£¸ÃÁĞ±í²»ÄÜ°üº¬ÏàÍ¬µÄ×éºÏÁ½´Î£¬×éºÏ¿ÉÒÔÒÔÈÎºÎË³Ğò·µ»Ø¡£
+åªä½¿ç”¨æ•°å­—1åˆ°9
+æ¯ä¸ªæ•°å­— æœ€å¤šä½¿ç”¨ä¸€æ¬¡
+è¿”å› æ‰€æœ‰å¯èƒ½çš„æœ‰æ•ˆç»„åˆçš„åˆ—è¡¨ ã€‚è¯¥åˆ—è¡¨ä¸èƒ½åŒ…å«ç›¸åŒçš„ç»„åˆä¸¤æ¬¡ï¼Œç»„åˆå¯ä»¥ä»¥ä»»ä½•é¡ºåºè¿”å›ã€‚
 
-Ê¾Àı 1:
-ÊäÈë: k = 3, n = 7
-Êä³ö: [[1,2,4]]
-½âÊÍ:
+ç¤ºä¾‹ 1:
+è¾“å…¥: k = 3, n = 7
+è¾“å‡º: [[1,2,4]]
+è§£é‡Š:
 1 + 2 + 4 = 7
-Ã»ÓĞÆäËû·ûºÏµÄ×éºÏÁË¡£
+æ²¡æœ‰å…¶ä»–ç¬¦åˆçš„ç»„åˆäº†ã€‚
 
-Ê¾Àı 2:
-ÊäÈë: k = 3, n = 9
-Êä³ö: [[1,2,6], [1,3,5], [2,3,4]]
-½âÊÍ:
+ç¤ºä¾‹ 2:
+è¾“å…¥: k = 3, n = 9
+è¾“å‡º: [[1,2,6], [1,3,5], [2,3,4]]
+è§£é‡Š:
 1 + 2 + 6 = 9
 1 + 3 + 5 = 9
 2 + 3 + 4 = 9
-Ã»ÓĞÆäËû·ûºÏµÄ×éºÏÁË¡£
+æ²¡æœ‰å…¶ä»–ç¬¦åˆçš„ç»„åˆäº†ã€‚
 
-Ê¾Àı 3:
-ÊäÈë: k = 4, n = 1
-Êä³ö: []
-½âÊÍ: ²»´æÔÚÓĞĞ§µÄ×éºÏ¡£
-ÔÚ[1,9]·¶Î§ÄÚÊ¹ÓÃ4¸ö²»Í¬µÄÊı×Ö£¬ÎÒÃÇ¿ÉÒÔµÃµ½µÄ×îĞ¡ºÍÊÇ1+2+3+4 = 10£¬ÒòÎª10 > 1£¬Ã»ÓĞÓĞĞ§µÄ×éºÏ¡£
+ç¤ºä¾‹ 3:
+è¾“å…¥: k = 4, n = 1
+è¾“å‡º: []
+è§£é‡Š: ä¸å­˜åœ¨æœ‰æ•ˆçš„ç»„åˆã€‚
+åœ¨[1,9]èŒƒå›´å†…ä½¿ç”¨4ä¸ªä¸åŒçš„æ•°å­—ï¼Œæˆ‘ä»¬å¯ä»¥å¾—åˆ°çš„æœ€å°å’Œæ˜¯1+2+3+4 = 10ï¼Œå› ä¸º10 > 1ï¼Œæ²¡æœ‰æœ‰æ•ˆçš„ç»„åˆã€‚
 */
 
-/* »ØËİËã·¨ */
+/* å›æº¯ç®—æ³• */
 class Solution
 {
 private:
-    vector<vector<int>> res; // ½á¹û
-    vector<int> path;        // ÖĞ¼ä´æ´¢µÄÂ·¾¶
+    vector<vector<int>> res; // ç»“æœ
+    vector<int> path;        // ä¸­é—´å­˜å‚¨çš„è·¯å¾„
 
 public:
-    // ¼ÆËãk¸öÊıµÄ×îĞ¡ºÍ
+    // è®¡ç®—kä¸ªæ•°çš„æœ€å°å’Œ
     int MinSumK(int k)
     {
         int sum = 0;
@@ -52,7 +52,7 @@ public:
 
     void BackTracing(int k, int targetSum, int curSum, int start)
     {
-        // ÏÈÈ·¶¨µİ¹é³ö¿Ú
+        // å…ˆç¡®å®šé€’å½’å‡ºå£
         if (path.size() == k)
         {
             if (curSum == targetSum)
@@ -61,28 +61,65 @@ public:
             }
             return;
         }
-        
-        // ¼ôÖ¦
+
+        // å‰ªæ
         if (curSum >= targetSum)
             return;
 
-        // ¿ªÊ¼»ØËİÈı²½×ß
+        // å¼€å§‹å›æº¯ä¸‰æ­¥èµ°
         for (int i = start; i <= 9; i++)
         {
             curSum += i;
-            path.push_back(i);                        // ´¦Àí
-            BackTracing(k, targetSum, curSum, i + 1); // µİ¹é
+            path.push_back(i);                        // å¤„ç†
+            BackTracing(k, targetSum, curSum, i + 1); // é€’å½’
             curSum -= i;
-            path.pop_back();                          // »ØËİ
+            path.pop_back(); // å›æº¯
         }
     }
     vector<vector<int>> combinationSum3(int k, int n)
     {
-        // ÅÅ³ıÎŞĞ§Çé¿ö
+        // æ’é™¤æ— æ•ˆæƒ…å†µ
         if (MinSumK(k) > n)
             return res;
 
         BackTracing(k, n, 0, 1);
+        return res;
+    }
+};
+
+class Solution2 // äºŒåˆ·
+{
+private:
+    vector<int> path;
+    vector<vector<int>> res;
+
+public:
+    void backTracking(int start, int end, int maxPathSize, int targetSum, int curSum)
+    {
+        // é€’å½’å‡ºå£ï¼ˆçºµå‘éå†ï¼‰
+        if (path.size() == maxPathSize)
+        {
+            if (curSum == targetSum)
+                res.push_back(path);
+            return;
+        }
+        // å‰ªæ
+        if (targetSum - curSum < start)
+            return;
+        // æ¨ªå‘éå†
+        for (int i = start; i <= end; i++)
+        {
+            curSum += i;
+            path.push_back(i);                                        // å¤„ç†
+            backTracking(i + 1, end, maxPathSize, targetSum, curSum); // é€’å½’
+            curSum -= i;
+            path.pop_back(); // å›æº¯
+        }
+    }
+
+    vector<vector<int>> combinationSum3(int k, int n)
+    {
+        backTracking(1, 9, k, n, 0);
         return res;
     }
 };

@@ -1,16 +1,16 @@
-#include <iostream> 
+#include <iostream>
 #include <vector>
 
 using namespace std;
 
 /*
-¸ø¶¨Á½¸öÕûÊı n ºÍ k£¬·µ»Ø·¶Î§ [1, n] ÖĞËùÓĞ¿ÉÄÜµÄ k ¸öÊıµÄ×éºÏ¡£
+ç»™å®šä¸¤ä¸ªæ•´æ•° n å’Œ kï¼Œè¿”å›èŒƒå›´ [1, n] ä¸­æ‰€æœ‰å¯èƒ½çš„ k ä¸ªæ•°çš„ç»„åˆã€‚
 
-Äã¿ÉÒÔ°´ ÈÎºÎË³Ğò ·µ»Ø´ğ°¸¡£
+ä½ å¯ä»¥æŒ‰ ä»»ä½•é¡ºåº è¿”å›ç­”æ¡ˆã€‚
 
-Ê¾Àı 1£º
-ÊäÈë£ºn = 4, k = 2
-Êä³ö£º
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šn = 4, k = 2
+è¾“å‡ºï¼š
 [
   [2,4],
   [3,4],
@@ -20,34 +20,36 @@ using namespace std;
   [1,4],
 ]
 
-Ê¾Àı 2£º
-ÊäÈë£ºn = 1, k = 1
-Êä³ö£º[[1]]
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥ï¼šn = 1, k = 1
+è¾“å‡ºï¼š[[1]]
 */
 
-class Solution // »ØËİËã·¨½â¾ö£¬ÀûÓÃÊ÷½á¹¹Àí½â
+class Solution // å›æº¯ç®—æ³•è§£å†³ï¼Œåˆ©ç”¨æ ‘ç»“æ„ç†è§£
 {
 private:
-    vector<int> path; // ´æ´¢µ±Ç°¾­¹ıµÄÊ÷µÄ½ÚµãÂ·¾¶
-    vector<vector<int>> res; // ´æ´¢×îÖÕ½á¹û
+    vector<int> path;        // å­˜å‚¨å½“å‰ç»è¿‡çš„æ ‘çš„èŠ‚ç‚¹è·¯å¾„
+    vector<vector<int>> res; // å­˜å‚¨æœ€ç»ˆç»“æœ
 
 public:
-    // »ØËİº¯Êı
-    void backTracking(int n, int k, int start){
-        if (path.size() == k){
+    // å›æº¯å‡½æ•°
+    void backTracking(int n, int k, int start)
+    {
+        if (path.size() == k)
+        {
             res.push_back(path);
             return;
-        } // µİ¹é³ö¿Ú
+        } // é€’å½’å‡ºå£
 
         for (int i = start; i <= n; i++)
         {
-            // ¼ôÖ¦£º»¹Ê£ÏÂµÄ < »¹ĞèÒªµÄ£¬Ôò¼ôÖ¦
+            // å‰ªæï¼šè¿˜å‰©ä¸‹çš„ < è¿˜éœ€è¦çš„ï¼Œåˆ™å‰ªæ
             if (n - i + 1 < k - path.size())
                 break;
-                 
-            path.push_back(i); // ´¦Àí
-            backTracking(n, k, i + 1); // µİ¹é
-            path.pop_back(); // »ØËİ
+
+            path.push_back(i);         // å¤„ç†
+            backTracking(n, k, i + 1); // é€’å½’
+            path.pop_back();           // å›æº¯
         }
     }
 
@@ -58,14 +60,47 @@ public:
     }
 };
 
-int main(){
+class Solution2 // äºŒåˆ·
+{
+private:
+    vector<int> path;
+    vector<vector<int>> res;
+
+public:
+    void backTracking(int start, int end, int k)
+    {
+        // å›æº¯å‡ºå£ï¼šå­ç»“æœpathå·²æ»¡ï¼ˆçºµå‘éå†ï¼‰
+        if (path.size() == k)
+        {
+            res.push_back(path);
+            return;
+        }
+        // æ¨ªå‘éå†
+        for (int i = start; i <= end; i++)
+        {
+            path.push_back(i);           // å¤„ç†
+            backTracking(i + 1, end, k); // é€’å½’
+            path.pop_back();             // å›æº¯
+        }
+    }
+
+    vector<vector<int>> combine(int n, int k)
+    {
+        backTracking(1, n, k);
+        return res;
+    }
+};
+
+int main()
+{
     int n = 4, k = 2;
-    Solution obj;
+    Solution2 obj;
     vector<vector<int>> res = obj.combine(4, 2);
     for (int i = 0; i < res.size(); i++)
     {
         cout << "[ ";
-        for (int j = 0; j < res[0].size(); j++){
+        for (int j = 0; j < res[0].size(); j++)
+        {
             cout << res[i][j] << " ";
         }
         cout << "]" << endl;

@@ -1,24 +1,25 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
 /*
-¸ø¶¨Ò»¸ö½ö°üº¬Êı×Ö 2-9 µÄ×Ö·û´®£¬·µ»ØËùÓĞËüÄÜ±íÊ¾µÄ×ÖÄ¸×éºÏ¡£´ğ°¸¿ÉÒÔ°´ ÈÎÒâË³Ğò ·µ»Ø¡£
+ç»™å®šä¸€ä¸ªä»…åŒ…å«æ•°å­— 2-9 çš„å­—ç¬¦ä¸²ï¼Œè¿”å›æ‰€æœ‰å®ƒèƒ½è¡¨ç¤ºçš„å­—æ¯ç»„åˆã€‚ç­”æ¡ˆå¯ä»¥æŒ‰ ä»»æ„é¡ºåº è¿”å›ã€‚
 
-¸ø³öÊı×Öµ½×ÖÄ¸µÄÓ³ÉäÈçÏÂ£¨Óëµç»°°´¼üÏàÍ¬£©¡£×¢Òâ 1 ²»¶ÔÓ¦ÈÎºÎ×ÖÄ¸¡£
+ç»™å‡ºæ•°å­—åˆ°å­—æ¯çš„æ˜ å°„å¦‚ä¸‹ï¼ˆä¸ç”µè¯æŒ‰é”®ç›¸åŒï¼‰ã€‚æ³¨æ„ 1 ä¸å¯¹åº”ä»»ä½•å­—æ¯ã€‚
 
-Ê¾Àı 1£º
-ÊäÈë£ºdigits = "23"
-Êä³ö£º["ad","ae","af","bd","be","bf","cd","ce","cf"]
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šdigits = "23"
+è¾“å‡ºï¼š["ad","ae","af","bd","be","bf","cd","ce","cf"]
 
-Ê¾Àı 2£º
-ÊäÈë£ºdigits = ""
-Êä³ö£º[]
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥ï¼šdigits = ""
+è¾“å‡ºï¼š[]
 
-Ê¾Àı 3£º
-ÊäÈë£ºdigits = "2"
-Êä³ö£º["a","b","c"]
+ç¤ºä¾‹ 3ï¼š
+è¾“å…¥ï¼šdigits = "2"
+è¾“å‡ºï¼š["a","b","c"]
 */
 
 class Solution
@@ -35,17 +36,17 @@ private:
         "pqrs", // 7
         "tuv",  // 8
         "wxyz"  // 9
-    }; // Êı×Ö-×ÖÄ¸¶ÔÕÕ
+    }; // æ•°å­—-å­—æ¯å¯¹ç…§
 
-    vector<string> res; // ´æ´¢×îÖÕ½á¹û
-    string curStr = ""; // ÓÃÓÚÁÙÊ±´æ´¢resÖĞµÄÃ¿¸ö×Ö·û´®
+    vector<string> res; // å­˜å‚¨æœ€ç»ˆç»“æœ
+    string curStr = ""; // ç”¨äºä¸´æ—¶å­˜å‚¨resä¸­çš„æ¯ä¸ªå­—ç¬¦ä¸²
 
 public:
     void backTracking(const string &digits, int index)
     {
         if (index == digits.length())
         {
-            // Ö®Ç°ÒÑ¾­ÕÒÆëÁË
+            // ä¹‹å‰å·²ç»æ‰¾é½äº†
             res.push_back(curStr);
             return;
         }
@@ -54,9 +55,9 @@ public:
         string letters = letterDict[num];
         for (int i = 0; i < letters.length(); i++)
         {
-            curStr += letters[i];            // ´¦Àí
-            backTracking(digits, index + 1); // µİ¹é
-            curStr.pop_back();               // »ØËİ
+            curStr += letters[i];            // å¤„ç†
+            backTracking(digits, index + 1); // é€’å½’
+            curStr.pop_back();               // å›æº¯
         }
     }
 
@@ -65,6 +66,49 @@ public:
         if (digits.length() == 0)
             return res;
 
+        backTracking(digits, 0);
+        return res;
+    }
+};
+
+class Solution2 // äºŒåˆ·
+{
+private:
+    string path = "";
+    vector<string> res;
+    unordered_map<char, string> dict = {
+        {'2', "abc"},
+        {'3', "def"},
+        {'4', "ghi"},
+        {'5', "jkl"},
+        {'6', "mno"},
+        {'7', "pqrs"},
+        {'8', "tuv"},
+        {'9', "wxyz"}};
+
+public:
+    void backTracking(const string &digits, int start)
+    {
+        // é€’å½’å‡ºå£
+        if (path.length() == digits.length())
+        {
+            res.push_back(path);
+            return;
+        }
+        char digit = digits[start];   // å½“å‰è¦å¤„ç†çš„æ•°å­—
+        string letters = dict[digit]; // å½“å‰å¤„ç†æ•°å­—å¯¹åº”çš„å­—æ¯
+        // æ¨ªå‘éå†
+        for (int i = 0; i < letters.length(); i++)
+        {
+            path.push_back(letters[i]);      // å¤„ç†
+            backTracking(digits, start + 1); // é€’å½’
+            path.pop_back();                 // å›æº¯
+        }
+    }
+    vector<string> letterCombinations(string digits)
+    {
+        if (digits == "")
+            return res;
         backTracking(digits, 0);
         return res;
     }
