@@ -4,19 +4,19 @@
 using namespace std;
 
 /*
-¸øÄãÒ»¸öÕûÊıÊı×é nums £¬Êı×éÖĞµÄÔªËØ »¥²»ÏàÍ¬ ¡£·µ»Ø¸ÃÊı×éËùÓĞ¿ÉÄÜµÄ
-×Ó¼¯
-£¨Ãİ¼¯£©¡£
+ç»™ä½ ä¸€ä¸ªæ•´æ•°æ•°ç»„ nums ï¼Œæ•°ç»„ä¸­çš„å…ƒç´  äº’ä¸ç›¸åŒ ã€‚è¿”å›è¯¥æ•°ç»„æ‰€æœ‰å¯èƒ½çš„
+å­é›†
+ï¼ˆå¹‚é›†ï¼‰ã€‚
 
-½â¼¯ ²»ÄÜ °üº¬ÖØ¸´µÄ×Ó¼¯¡£Äã¿ÉÒÔ°´ ÈÎÒâË³Ğò ·µ»Ø½â¼¯¡£
+è§£é›† ä¸èƒ½ åŒ…å«é‡å¤çš„å­é›†ã€‚ä½ å¯ä»¥æŒ‰ ä»»æ„é¡ºåº è¿”å›è§£é›†ã€‚
 
-Ê¾Àı 1£º
-ÊäÈë£ºnums = [1,2,3]
-Êä³ö£º[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šnums = [1,2,3]
+è¾“å‡ºï¼š[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
 
-Ê¾Àı 2£º
-ÊäÈë£ºnums = [0]
-Êä³ö£º[[],[0]]
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥ï¼šnums = [0]
+è¾“å‡ºï¼š[[],[0]]
 */
 
 class Solution
@@ -28,7 +28,7 @@ private:
 public:
     void BackTracking(const vector<int> &nums, int len, int start)
     {
-        // È·¶¨µİ¹é³ö¿Ú
+        // ç¡®å®šé€’å½’å‡ºå£
         if (start == len)
         {
             res.push_back(path);
@@ -37,9 +37,9 @@ public:
 
         for (int i = start; i < nums.size(); i++)
         {
-            path.push_back(nums[i]);            // ´¦Àí
-            BackTracking(nums, len, i + 1); // µİ¹é
-            path.pop_back();                    // »ØËİ
+            path.push_back(nums[i]);        // å¤„ç†
+            BackTracking(nums, len, i + 1); // é€’å½’
+            path.pop_back();                // å›æº¯
         }
     }
 
@@ -49,6 +49,36 @@ public:
         {
             BackTracking(nums, i, 0);
         }
+        return res;
+    }
+};
+
+class Solution2 // äºŒåˆ·
+{
+private:
+    vector<int> path;
+    vector<vector<int>> res;
+
+public:
+    void backTracking(const vector<int> &nums, int start)
+    {
+        // è¦æ±‚æ‰€æœ‰å­é›†ï¼Œæ•…æ¯æ¬¡éƒ½è¦å°†pathåŠ å…¥ç»“æœé›†
+        res.push_back(path);
+        // é€’å½’å‡ºå£ï¼ˆçºµå‘éå†ï¼‰
+        if (start >= nums.size())
+            return;
+        // æ¨ªå‘éå†
+        for (int i = start; i < nums.size(); ++i)
+        {
+            path.push_back(nums[i]);   // å¤„ç†
+            backTracking(nums, i + 1); // é€’å½’
+            path.pop_back();           // å›æº¯
+        }
+    }
+
+    vector<vector<int>> subsets(vector<int> &nums)
+    {
+        backTracking(nums, 0);
         return res;
     }
 };
@@ -71,7 +101,7 @@ void Display(vector<vector<int>> nums)
 int main()
 {
     vector<int> nums = {1, 2, 3};
-    Solution obj;
+    Solution2 obj;
     vector<vector<int>> res = obj.subsets(nums);
     Display(res);
 
