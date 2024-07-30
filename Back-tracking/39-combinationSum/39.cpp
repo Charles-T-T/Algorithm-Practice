@@ -1,30 +1,31 @@
 #include <iostream>
 #include <vector>
+#include <unordered_set>
 
 using namespace std;
 
 /*
-¸øÄãÒ»¸ö ÎŞÖØ¸´ÔªËØ µÄÕûÊıÊı×é candidates ºÍÒ»¸öÄ¿±êÕûÊı target £¬ÕÒ³ö candidates ÖĞ¿ÉÒÔÊ¹Êı×ÖºÍÎªÄ¿±êÊı target µÄ ËùÓĞ ²»Í¬×éºÏ £¬²¢ÒÔÁĞ±íĞÎÊ½·µ»Ø¡£Äã¿ÉÒÔ°´ ÈÎÒâË³Ğò ·µ»ØÕâĞ©×éºÏ¡£
+ç»™ä½ ä¸€ä¸ª æ— é‡å¤å…ƒç´  çš„æ•´æ•°æ•°ç»„ candidates å’Œä¸€ä¸ªç›®æ ‡æ•´æ•° target ï¼Œæ‰¾å‡º candidates ä¸­å¯ä»¥ä½¿æ•°å­—å’Œä¸ºç›®æ ‡æ•° target çš„ æ‰€æœ‰ ä¸åŒç»„åˆ ï¼Œå¹¶ä»¥åˆ—è¡¨å½¢å¼è¿”å›ã€‚ä½ å¯ä»¥æŒ‰ ä»»æ„é¡ºåº è¿”å›è¿™äº›ç»„åˆã€‚
 
-candidates ÖĞµÄ Í¬Ò»¸ö Êı×Ö¿ÉÒÔ ÎŞÏŞÖÆÖØ¸´±»Ñ¡È¡ ¡£Èç¹ûÖÁÉÙÒ»¸öÊı×ÖµÄ±»Ñ¡ÊıÁ¿²»Í¬£¬ÔòÁ½ÖÖ×éºÏÊÇ²»Í¬µÄ¡£
+candidates ä¸­çš„ åŒä¸€ä¸ª æ•°å­—å¯ä»¥ æ— é™åˆ¶é‡å¤è¢«é€‰å– ã€‚å¦‚æœè‡³å°‘ä¸€ä¸ªæ•°å­—çš„è¢«é€‰æ•°é‡ä¸åŒï¼Œåˆ™ä¸¤ç§ç»„åˆæ˜¯ä¸åŒçš„ã€‚
 
-¶ÔÓÚ¸ø¶¨µÄÊäÈë£¬±£Ö¤ºÍÎª target µÄ²»Í¬×éºÏÊıÉÙÓÚ 150 ¸ö¡£
+å¯¹äºç»™å®šçš„è¾“å…¥ï¼Œä¿è¯å’Œä¸º target çš„ä¸åŒç»„åˆæ•°å°‘äº 150 ä¸ªã€‚
 
-Ê¾Àı 1£º
-ÊäÈë£ºcandidates = [2,3,6,7], target = 7
-Êä³ö£º[[2,2,3],[7]]
-½âÊÍ£º
-2 ºÍ 3 ¿ÉÒÔĞÎ³ÉÒ»×éºòÑ¡£¬2 + 2 + 3 = 7 ¡£×¢Òâ 2 ¿ÉÒÔÊ¹ÓÃ¶à´Î¡£
-7 Ò²ÊÇÒ»¸öºòÑ¡£¬ 7 = 7 ¡£
-½öÓĞÕâÁ½ÖÖ×éºÏ¡£
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šcandidates = [2,3,6,7], target = 7
+è¾“å‡ºï¼š[[2,2,3],[7]]
+è§£é‡Šï¼š
+2 å’Œ 3 å¯ä»¥å½¢æˆä¸€ç»„å€™é€‰ï¼Œ2 + 2 + 3 = 7 ã€‚æ³¨æ„ 2 å¯ä»¥ä½¿ç”¨å¤šæ¬¡ã€‚
+7 ä¹Ÿæ˜¯ä¸€ä¸ªå€™é€‰ï¼Œ 7 = 7 ã€‚
+ä»…æœ‰è¿™ä¸¤ç§ç»„åˆã€‚
 
-Ê¾Àı 2£º
-ÊäÈë: candidates = [2,3,5], target = 8
-Êä³ö: [[2,2,2,2],[2,3,3],[3,5]]
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥: candidates = [2,3,5], target = 8
+è¾“å‡º: [[2,2,2,2],[2,3,3],[3,5]]
 
-Ê¾Àı 3£º
-ÊäÈë: candidates = [2], target = 1
-Êä³ö: []
+ç¤ºä¾‹ 3ï¼š
+è¾“å…¥: candidates = [2], target = 1
+è¾“å‡º: []
 */
 
 class Solution
@@ -34,24 +35,27 @@ private:
     vector<int> curComb;
 
 public:
-    void backTracking(const vector<int> &candidates, int target, int sum, int startIndex){
-        // È·¶¨µİ¹é³ö¿Ú
-        if (sum == target){
+    void backTracking(const vector<int> &candidates, int target, int sum, int startIndex)
+    {
+        // ç¡®å®šé€’å½’å‡ºå£
+        if (sum == target)
+        {
             res.push_back(curComb);
             return;
         }
         if (sum > target)
             return;
 
-        for (int i = startIndex; i < candidates.size(); i++){
-            // ´¦Àí
+        for (int i = startIndex; i < candidates.size(); i++)
+        {
+            // å¤„ç†
             sum += candidates[i];
             curComb.push_back(candidates[i]);
 
-            // µİ¹é
-            backTracking(candidates, target, sum, i); // ×¢ÒâÕâÀï²»ÓÃi+1
+            // é€’å½’
+            backTracking(candidates, target, sum, i); // æ³¨æ„è¿™é‡Œä¸ç”¨i+1
 
-            // »ØËİ
+            // å›æº¯
             sum -= candidates[i];
             curComb.pop_back();
         }
@@ -62,27 +66,63 @@ public:
         backTracking(candidates, target, 0, 0);
         return res;
     }
+};
 
-    void ShowRes(){
-        cout << "[";
-        for (int i = 0; i < res.size(); i++)
+// äºŒåˆ·
+class Solution2
+{
+private:
+    vector<int> path;
+    vector<vector<int>> res;
+
+public:
+    void backTracking(const vector<int> &candidates, int target, int curSum, int start)
+    {
+        // é€’å½’å‡ºå£ï¼ˆçºµå‘éå†ï¼‰
+        if (curSum == target)
         {
-            cout << "[ ";
-            for (int j = 0; j < res[i].size(); j++)
-                cout << res[i][j] << " ";
-            cout << "]";
+            res.push_back(path);
+            return;
         }
-        cout << "]";
+
+        // å‰ªæ
+        if (curSum > target)
+            return;
+
+        // æ¨ªå‘éå†
+        for (int i = start; i < candidates.size(); ++i)
+        {
+            path.push_back(candidates[i]);
+            curSum += candidates[i];                     // å¤„ç†
+            backTracking(candidates, target, curSum, i); // é€’å½’
+            path.pop_back();                             // å›æº¯
+            curSum -= candidates[i];
+        }
+    }
+
+    vector<vector<int>> combinationSum(vector<int> &candidates, int target)
+    {
+        backTracking(candidates, target, 0, 0);
+        return res;
     }
 };
 
-int main(){
+int main()
+{
     vector<int> candidates = {2, 3, 6, 7};
     int target = 7;
-    Solution obj;
-
+    Solution2 obj;
     vector<vector<int>> res = obj.combinationSum(candidates, target);
-    obj.ShowRes();
+
+    cout << "[";
+    for (int i = 0; i < res.size(); i++)
+    {
+        cout << "[ ";
+        for (int j = 0; j < res[i].size(); j++)
+            cout << res[i][j] << " ";
+        cout << "]";
+    }
+    cout << "]";
 
     return 0;
 }
