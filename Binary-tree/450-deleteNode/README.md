@@ -102,19 +102,25 @@ else if (!d->left && d->right)
 记 `d` 的节点值为 $v_d$ ， `d` 的左子树节点值的集合为 $\mathbf{L}$ ， `d` 的右子树节点值集合为 $\mathbf{R}$ 。根据二叉树的性质，
 
 $$
+\begin{array}{l}
 \forall v_l \in \mathbf{L} : v_l < v_d \\
 \forall v_r \in \mathbf{R} : v_r > v_d \\
 即 \enspace v_l < v_r
+\end{array}
 $$
 
 现取出右子树的最小节点，即 $\mathbf{R}$ 中的最小值 $v_r' = min\{v_r\}$ ，则
 
 $$
+\begin{array}{l}
 \forall v_r \in \mathbf{R} - v_r' : v_r' < v_r \\
 因为 \enspace v_r' \in \mathbf{R}, \enspace 所以 \enspace \forall v_l \in \mathbf{L} : v_l < v_r' \\
 所以 \enspace v_l < v_r' < v_r \\
 所以 \enspace v_r' 可以替代 v_d 的位置
+\end{array}
 $$
+
+
 结合下面的示例图可以更好理解：
 
 ![img](./image-20240724085914084.png)
