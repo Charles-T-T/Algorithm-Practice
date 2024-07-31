@@ -5,19 +5,19 @@
 using namespace std;
 
 /*
-¸ø¶¨Ò»¸ö²»º¬ÖØ¸´Êı×ÖµÄÊı×é nums £¬·µ»ØÆä ËùÓĞ¿ÉÄÜµÄÈ«ÅÅÁĞ ¡£Äã¿ÉÒÔ °´ÈÎÒâË³Ğò ·µ»Ø´ğ°¸¡£
+ç»™å®šä¸€ä¸ªä¸å«é‡å¤æ•°å­—çš„æ•°ç»„ nums ï¼Œè¿”å›å…¶ æ‰€æœ‰å¯èƒ½çš„å…¨æ’åˆ— ã€‚ä½ å¯ä»¥ æŒ‰ä»»æ„é¡ºåº è¿”å›ç­”æ¡ˆã€‚
 
-Ê¾Àı 1£º
-ÊäÈë£ºnums = [1,2,3]
-Êä³ö£º[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šnums = [1,2,3]
+è¾“å‡ºï¼š[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 
-Ê¾Àı 2£º
-ÊäÈë£ºnums = [0,1]
-Êä³ö£º[[0,1],[1,0]]
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥ï¼šnums = [0,1]
+è¾“å‡ºï¼š[[0,1],[1,0]]
 
-Ê¾Àı 3£º
-ÊäÈë£ºnums = [1]
-Êä³ö£º[[1]]
+ç¤ºä¾‹ 3ï¼š
+è¾“å…¥ï¼šnums = [1]
+è¾“å‡ºï¼š[[1]]
 */
 
 class Solution
@@ -26,17 +26,20 @@ private:
     vector<vector<int>> res;
 
 public:
-    void BackTracking(vector<int> &temp, int startIndex){
-        // È·¶¨µİ¹é³ö¿Ú
-        if (startIndex == temp.size()){
+    void BackTracking(vector<int> &temp, int startIndex)
+    {
+        // ç¡®å®šé€’å½’å‡ºå£
+        if (startIndex == temp.size())
+        {
             res.push_back(temp);
             return;
         }
 
-        for (int i = startIndex; i < temp.size(); i++){
-            swap(temp[startIndex], temp[i]); // ´¦Àí
-            BackTracking(temp, startIndex + 1); // µİ¹é
-            swap(temp[startIndex], temp[i]); // »ØËİ
+        for (int i = startIndex; i < temp.size(); i++)
+        {
+            swap(temp[startIndex], temp[i]);    // å¤„ç†
+            BackTracking(temp, startIndex + 1); // é€’å½’
+            swap(temp[startIndex], temp[i]);    // å›æº¯
         }
     }
     vector<vector<int>> permute(vector<int> &nums)
@@ -47,19 +50,88 @@ public:
     }
 };
 
+class Solution2 // äºŒåˆ·
+{
+private:
+    vector<int> path;
+    vector<vector<int>> res;
 
+public:
+    void backTracking(const vector<int> &nums, int start)
+    {
+        // é€’å½’å‡ºå£ï¼ˆçºµå‘éå†ï¼‰
+        if (start >= nums.size())
+        {
+            res.push_back(path);
+            return;
+        }
+        // æ¨ªå‘éå†
+        for (int i = start; i < nums.size(); ++i)
+        {
+            swap(path[start], path[i]);    // å¤„ç†
+            backTracking(nums, start + 1); // é€’å½’
+            swap(path[start], path[i]);    // å›æº¯
+        }
+    }
+    vector<vector<int>> permute(vector<int> &nums)
+    {
+        path = nums;
+        backTracking(nums, 0);
+        return res;
+    }
+};
 
-int main(){
+class Solution2_2 // äºŒåˆ·ï¼Œæ ‡å‡†ä¸‰éƒ¨æ›²è§£æ³•
+{
+private:
+    vector<int> path;
+    vector<vector<int>> res;
+    vector<int> used; // è®°å½•æ•°å­—çš„ä½¿ç”¨æƒ…å†µï¼Œç”¨äºå»é‡
+
+public:
+    void backTracking(const vector<int> &nums)
+    {
+        // é€’å½’å‡ºå£ï¼ˆçºµå‘éå†ï¼‰
+        if (path.size() == nums.size())
+        {
+            res.push_back(path);
+            return;
+        }
+        // æ¨ªå‘éå†
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            // å»é‡
+            if (used[i])
+                continue;
+            used[i] = 1;
+            path.push_back(nums[i]); // å¤„ç†
+            backTracking(nums);      // é€’å½’
+            path.pop_back();         // å›æº¯
+            used[i] = 0;
+        }
+    }
+
+    vector<vector<int>> permute(vector<int> &nums)
+    {
+        used.resize(nums.size());
+        backTracking(nums);
+        return res;
+    }
+};
+
+int main()
+{
     vector<int> nums = {1, 2, 3};
-    Solution obj;
+    Solution2_2 obj;
     vector<vector<int>> res = obj.permute(nums);
-
 
     cout << "res: ";
     cout << "[ ";
-    for (int i = 0; i < res.size(); i++){
+    for (int i = 0; i < res.size(); i++)
+    {
         cout << "[ ";
-        for (int j = 0; j < res[0].size(); j++){
+        for (int j = 0; j < res[0].size(); j++)
+        {
             cout << res[i][j] << " ";
         }
         cout << "]";
