@@ -30,8 +30,26 @@ public:
          * 维护一个最远距离farDist，如果它比当前下标小了说明无法跳更远
          */
         int farDist = 0;
-        for (int i = 0; i < nums.size(); i++) {
-            if (farDist < i) return false;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (farDist < i)
+                return false;
+            farDist = max(farDist, i + nums[i]);
+        }
+        return true;
+    }
+};
+
+class Solution2 // 二刷
+{
+public:
+    bool canJump(vector<int> &nums)
+    {
+        int farDist = 0; // 维护一个能到达的最长距离farDist
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            if (farDist < i)
+                return false;
             farDist = max(farDist, i + nums[i]);
         }
         return true;

@@ -1,8 +1,11 @@
 # 122. 买卖股票的最佳时机 II
 
+[点此跳转题目链接](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/description/)
+
 <p align="right">
-——这题的贪心用得太优雅了，遂记录一下。
+——这题的贪心用得太优雅了，记录一下。
 </p>
+
 
 ## 题目描述
 
@@ -72,11 +75,7 @@
 
   采用贪心思想，把日利润为正的累加：4 + 3 = 7，就是最大利润了！
 
-这样写出的代码也是相当简洁的。
-
-
-
-## 代码实现（C++）
+这样写出的代码也是相当简洁的：
 
 ```cpp
 int maxProfit(vector<int> &prices)
