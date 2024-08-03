@@ -94,7 +94,7 @@
   - [55. 跳跃游戏](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/55-canJump) 
   - [122. 买卖股票的最佳时机 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/122-maxProfit) :star2:  ​
   - [134. 加油站](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/134-canCompleteCircuit) 
-  - [135. 分发糖果](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/135- candy) :star2: ​
+  - [135. 分发糖果](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/135-candy) :star2: ​
   - [376. 摆动序列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/376-wiggleMaxLength)  
   - [406. 根据身高重建队列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/406-reconstructQueue) 
   - [455. 分发饼干](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/455-findContentChildren) :star2:  ​
