@@ -83,10 +83,17 @@
 - $\mathcal{Greedy\enspace Algorithm}$
   
   
+  - [45. 跳跃游戏 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/45-jump) :star2:  ​
   - [53. 最大子数组和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/53-maxSubArray) 
-  - [122. 买卖股票的最佳时机 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/122-maxProfit) 
+  - [55. 跳跃游戏](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/55-canJump) 
+  - [122. 买卖股票的最佳时机 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/122-maxProfit) :star2:  ​
+  - [134. 加油站](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/134-canCompleteCircuit) 
+  - [135. 分发糖果](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/135- candy) :star2: ​
   - [376. 摆动序列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/376-wiggleMaxLength)  
+  - [406. 根据身高重建队列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/406-reconstructQueue) 
   - [455. 分发饼干](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/455-findContentChildren) :star2:  ​
+  - [860. 柠檬水找零](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/860-lemonadeChange) 
+  - [1005. K次取反后最大化的数组](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/1005-largestSumAfterKNegations) 
   
 - $\mathcal{String}$ 
 
@@ -111,7 +118,6 @@
   - [1047. 删除字符串中的所有相邻元素](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/1047)
 
   
-
 
 <br>
 
