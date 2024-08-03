@@ -35,6 +35,8 @@
   - [59. 螺旋矩阵 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/59-spiral_matrix)
   - [704. 二分查找](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/704-binary_search)
   - [977. 有序数组的平方](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/977-sorted_array_square)
+
+
 - $\mathcal{List}$
   - [19. 删除链表的倒数第N个节点](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/19-delete_the_last_Nth_node)
   - [24. 两两交换链表中的节点](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/24)
@@ -43,9 +45,11 @@
   - [206. 反转链表](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/206)
   - [707. 设计链表](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/707)
   - [面试题 02.07. 链表相交](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/0207-getIntersectionNode) 
-- $\mathcal{Binary \enspace tree}$ 
+
+
+- $\mathcal{Binary \enspace Tree}$
   - [二叉树的前、中、后序遍历](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/orderTraversal) :star2: 
-  -  [层序遍历](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/levelOrderTraversal) 
+  - [层序遍历](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/levelOrderTraversal) 
   - [101. 对称二叉树](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/101) 
   - [104. 二叉树的最大深度](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/104)
   - [106. 从中序和后序遍历序列构造二叉树](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/106) :star2: 
@@ -57,7 +61,7 @@
   - [226. 翻转二叉树](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree)
   - [235. 二叉搜索树的最近公共祖先](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/235-lowestCommonAncestor) :star2: 
   - [236. 二叉树的最近公共祖先](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/236-lowestCommonAncestor)
-  -  [257. 二叉树的所有路径](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/257) :star2:  ​
+  - [257. 二叉树的所有路径](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/257) :star2:  ​
   - [404. 左叶子之和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/404)
   - [450. 删除二叉搜索树中的节点](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/450-deleteNode) :star2:  ​
   - [501. 二叉搜索树中的众数](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Binary-tree/501-findMode)
@@ -74,15 +78,15 @@
   - [349. 两个数组的交集](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/349)
   - [383. 赎金信](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Hash/383-canConstruct)
   - [454. 四数相加 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Hash/454-fourSumCount)
-- $\mathcal{Two \enspace pointer}$s
+
+
+- $\mathcal{Two \enspace Pointers}$
   - [11. 盛水最多的容器](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dual-pointers/11-container_with_most_water) :star2:  ​
   - [15. 三数之和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/15) :star2: 
   - [18. 四数之和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dual-pointers/18-fourSum)
 
 
-- $\mathcal{Greedy\enspace Algorithm}$
-  
-  
+- $\mathcal{Greedy\enspace Algorithm}$ 
   - [53. 最大子数组和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/53-maxSubArray) 
   - [122. 买卖股票的最佳时机 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/122-maxProfit) 
   - [376. 摆动序列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Greedy-algorithm/376-wiggleMaxLength)  
