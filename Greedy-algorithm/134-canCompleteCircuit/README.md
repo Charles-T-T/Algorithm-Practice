@@ -63,15 +63,19 @@
 **如果从加油站 `i` 出发，到加油站 `j` 时，剩余油量第一次不足，则说明从 `i` 到 `j` 内的任意加油站出发，到 `j` 时剩余油量都会不足，于是类似地考虑以 `j + 1` 为起点的情况** ......由于题目说了，要么有唯一解要么无解，我们这样遍历一次之后就能找到目标起点。
 
 上面的结论证明起来也并不复杂：
+
+
 $$
 \begin{array}{l}
-上述条件下，假设从[i, j]中某个加油站k出发，到j时剩余油量充足 \enspace (G_{kj} \ge 0) \\
-由于从i出发，到j时剩余油量第一次不足 \enspace (G_{ij} < 0) \\
+上述条件下，假设从[i, j]中某个加油站 \space k \space 出发，到 \space j \space 时剩余油量充足 \enspace (G_{kj} \ge 0) \\
+由于从 \space i \space 出发，到 \space j \space 时剩余油量第一次不足 \enspace (G_{ij} < 0) \\
 且 \enspace G_{ij} = G_{ik} + G_{kj} \\
-所以 \enspace G_{ik} < 0，即 \enspace 从i出发，到k时剩余油量就不足了，矛盾 \\
+所以 \enspace G_{ik} < 0，即 \enspace 从 \space i \space 出发，到 \space k \space 时剩余油量就不足了，矛盾 \\
 所以 \enspace 从[i, j]中任意加油站出发，到j时，剩余油量都会不足
 \end{array}
 $$
+
+
 **代码（C++）**
 
 ```cpp
