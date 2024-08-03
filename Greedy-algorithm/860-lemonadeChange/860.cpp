@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -42,33 +43,45 @@ public:
         // 下面三个变量表示手头5美元、10美元面值钞票的张数
         int curRemain5 = 0;
         int curRemain10 = 0;
-        for (const int &bill : bills) {
+        for (const int &bill : bills)
+        {
             switch (bill)
             {
             case 5:
                 curRemain5++;
                 break;
-            
+
             case 10:
-                if (curRemain5 > 0) {
+                if (curRemain5 > 0)
+                {
                     curRemain5--;
                     curRemain10++;
-                } else {
+                }
+                else
+                {
                     return false;
                 }
                 break;
 
             case 20:
-                if (curRemain5 > 0) {
-                    if (curRemain10 > 0) {
+                if (curRemain5 > 0)
+                {
+                    if (curRemain10 > 0)
+                    {
                         curRemain10--;
                         curRemain5--;
-                    } else if (curRemain5 > 2) {
+                    }
+                    else if (curRemain5 > 2)
+                    {
                         curRemain5 -= 3;
-                    } else {
+                    }
+                    else
+                    {
                         return false;
                     }
-                } else {
+                }
+                else
+                {
                     return false;
                 }
                 break;
@@ -82,12 +95,49 @@ public:
     }
 };
 
-int main(){
-    vector<int> bills = { 5, 5, 20, 5, 5, 10, 5, 10, 5, 20 };
+class Solution2 // 二刷
+{
+public:
+    bool lemonadeChange(vector<int> &bills)
+    {
+        // 贪心：尽量先把大面值的找出去
+        int cash5 = 0, cash10 = 0;
+        for (int bill : bills)
+        {
+            switch (bill)
+            {
+            case 5:
+                cash5++;
+                break;
+            case 10:
+                if (!cash5)
+                    return false;
+                cash5--;
+                cash10++;
+                break;
+            case 20:
+                if (cash10 && cash5)
+                    cash10--, cash5--;
+                else if (cash5 >= 3)
+                    cash5 -= 3;
+                else
+                    return false;
+                break;
+            default:
+                break;
+            }
+        }
+        return true;
+    }
+};
+
+int main()
+{
+    vector<int> bills = {5, 5, 20, 5, 5, 10, 5, 10, 5, 20};
     Solution obj;
     if (obj.lemonadeChange(bills))
         cout << "True!" << endl;
-    else    
+    else
         cout << "False!" << endl;
 
     return 0;
