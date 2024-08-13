@@ -5,30 +5,30 @@
 using namespace std;
 
 /*
-¸øÄãÒ»¸ö·Ç¸ºÕûÊıÊı×é nums ºÍÒ»¸öÕûÊı target ¡£
+ç»™ä½ ä¸€ä¸ªéè´Ÿæ•´æ•°æ•°ç»„ nums å’Œä¸€ä¸ªæ•´æ•° target ã€‚
 
-ÏòÊı×éÖĞµÄÃ¿¸öÕûÊıÇ°Ìí¼Ó '+' »ò '-' £¬È»ºó´®ÁªÆğËùÓĞÕûÊı£¬¿ÉÒÔ¹¹ÔìÒ»¸ö ±í´ïÊ½ £º
+å‘æ•°ç»„ä¸­çš„æ¯ä¸ªæ•´æ•°å‰æ·»åŠ  '+' æˆ– '-' ï¼Œç„¶åä¸²è”èµ·æ‰€æœ‰æ•´æ•°ï¼Œå¯ä»¥æ„é€ ä¸€ä¸ª è¡¨è¾¾å¼ ï¼š
 
-ÀıÈç£¬nums = [2, 1] £¬¿ÉÒÔÔÚ 2 Ö®Ç°Ìí¼Ó '+' £¬ÔÚ 1 Ö®Ç°Ìí¼Ó '-' £¬È»ºó´®ÁªÆğÀ´µÃµ½±í´ïÊ½ "+2-1" ¡£
-·µ»Ø¿ÉÒÔÍ¨¹ıÉÏÊö·½·¨¹¹ÔìµÄ¡¢ÔËËã½á¹ûµÈÓÚ target µÄ²»Í¬ ±í´ïÊ½ µÄÊıÄ¿¡£
+ä¾‹å¦‚ï¼Œnums = [2, 1] ï¼Œå¯ä»¥åœ¨ 2 ä¹‹å‰æ·»åŠ  '+' ï¼Œåœ¨ 1 ä¹‹å‰æ·»åŠ  '-' ï¼Œç„¶åä¸²è”èµ·æ¥å¾—åˆ°è¡¨è¾¾å¼ "+2-1" ã€‚
+è¿”å›å¯ä»¥é€šè¿‡ä¸Šè¿°æ–¹æ³•æ„é€ çš„ã€è¿ç®—ç»“æœç­‰äº target çš„ä¸åŒ è¡¨è¾¾å¼ çš„æ•°ç›®ã€‚
 
 
 
-Ê¾Àı 1£º
-ÊäÈë£ºnums = [1,1,1,1,1], target = 3
-Êä³ö£º5
-½âÊÍ£ºÒ»¹²ÓĞ 5 ÖÖ·½·¨ÈÃ×îÖÕÄ¿±êºÍÎª 3 ¡£
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šnums = [1,1,1,1,1], target = 3
+è¾“å‡ºï¼š5
+è§£é‡Šï¼šä¸€å…±æœ‰ 5 ç§æ–¹æ³•è®©æœ€ç»ˆç›®æ ‡å’Œä¸º 3 ã€‚
 -1 + 1 + 1 + 1 + 1 = 3
 +1 - 1 + 1 + 1 + 1 = 3
 +1 + 1 - 1 + 1 + 1 = 3
 +1 + 1 + 1 - 1 + 1 = 3
 +1 + 1 + 1 + 1 - 1 = 3
 
-Ê¾Àı 2£º
-ÊäÈë£ºnums = [1], target = 1
-Êä³ö£º1
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥ï¼šnums = [1], target = 1
+è¾“å‡ºï¼š1
 
-ÌáÊ¾£º
+æç¤ºï¼š
 1 <= nums.length <= 20
 0 <= nums[i] <= 1000
 0 <= sum(nums[i]) <= 1000
@@ -38,47 +38,48 @@ using namespace std;
 class Solution
 {
 private:
-
 public:
     int findTargetSumWays(vector<int> &nums, int target)
     {
         /**
-         * ¼Çx¡¢y·Ö±ğÎªÄ³¸ö±í´ïÊ½ÖĞ£¬·ûºÅÎª¡°+¡±ÊıÖ®ºÍÓë·ûºÅÎª¡°-¡±ÊıÖ®ºÍ
+         * è®°xã€yåˆ†åˆ«ä¸ºæŸä¸ªè¡¨è¾¾å¼ä¸­ï¼Œç¬¦å·ä¸ºâ€œ+â€æ•°ä¹‹å’Œä¸ç¬¦å·ä¸ºâ€œ-â€æ•°ä¹‹å’Œ
          * x + y = target
-         * ¼ÇsumÎªnumsÖĞËùÓĞÊıÖ®ºÍ
+         * è®°sumä¸ºnumsä¸­æ‰€æœ‰æ•°ä¹‹å’Œ
          * x - y = sum
          * y = x - sum
          * x + x - sum = target
          * x = (target + sum) / 2
-         * ËùÒÔ£¬ÒªÇóµÄ¾ÍÊÇÕâ¸öxµÄ²»Í¬×éºÏ·½Ê½ÓĞ¶àÉÙÖÖ
-        */
+         * æ‰€ä»¥ï¼Œè¦æ±‚çš„å°±æ˜¯è¿™ä¸ªxçš„ä¸åŒç»„åˆæ–¹å¼æœ‰å¤šå°‘ç§
+         */
         int sum = 0;
         for (int i = 0; i < nums.size(); ++i)
             sum += nums[i];
 
-        // ÓÉÉÏÃæµÄ·ÖÎö£¬x = (target + sum) / 2ĞèÎªÕûÊı£¬Ôòtarget + sumÓ¦ÎªÅ¼Êı
+        // ç”±ä¸Šé¢çš„åˆ†æï¼Œx = (target + sum) / 2éœ€ä¸ºæ•´æ•°ï¼Œåˆ™target + sumåº”ä¸ºå¶æ•°
         if ((target + sum) % 2 != 0)
-            return 0; 
-        // ×ÔÈ»£¬targetµÄ¾ø¶ÔÖµ²»ÄÜ´óÓÚsum£¬·ñÔòÈ«ÎªÕı»òÈ«Îª¸º¶¼´ï²»µ½£¨ÌâÄ¿ËµÁËnums[i] >= 0£©
+            return 0;
+        // è‡ªç„¶ï¼Œtargetçš„ç»å¯¹å€¼ä¸èƒ½å¤§äºsumï¼Œå¦åˆ™å…¨ä¸ºæ­£æˆ–å…¨ä¸ºè´Ÿéƒ½è¾¾ä¸åˆ°ï¼ˆé¢˜ç›®è¯´äº†nums[i] >= 0ï¼‰
         if (abs(target) > sum)
             return 0;
 
         /**
-         * Çó³öx£¬ÓÃ01±³°üÎÊÌâµÄË¼Ïë
-         * nums[i]Ïàµ±ÓÚµÚi¼şÎïÆ·µÄÖØÁ¿
-         * xÏàµ±ÓÚ±³°üÈİÁ¿
-         * ±¾ÌâÏàµ±ÓÚÇó¡°ÓÃnumsÀïµÄÎïÆ·°ÑÈİÁ¿ÎªxµÄ±³°ü×°ÂúÓĞ¶àÉÙÖÖ·½·¨¡±
-        */
-        int bagSize = (target + sum) / 2; // ÎªÁË±ãÓÚÀí½â£¬Ö±½Ó°Ñx¼Ç×÷bagSize
+         * æ±‚å‡ºxï¼Œç”¨01èƒŒåŒ…é—®é¢˜çš„æ€æƒ³
+         * nums[i]ç›¸å½“äºç¬¬iä»¶ç‰©å“çš„é‡é‡
+         * xç›¸å½“äºèƒŒåŒ…å®¹é‡
+         * æœ¬é¢˜ç›¸å½“äºæ±‚â€œç”¨numsé‡Œçš„ç‰©å“æŠŠå®¹é‡ä¸ºxçš„èƒŒåŒ…è£…æ»¡æœ‰å¤šå°‘ç§æ–¹æ³•â€
+         */
+        int bagSize = (target + sum) / 2; // ä¸ºäº†ä¾¿äºç†è§£ï¼Œç›´æ¥æŠŠxè®°ä½œbagSize
 
-        // ½ÓÏÂÀ´»ù±¾°´ÕÕ¶¯Ì¬¹æ»®±ê×¼²½Öè×ß
-        // ³õÊ¼»¯dpÊı×é£¬dp[i]±íÊ¾¡°´Ónums[0] ~ nums[i]ÖĞÑ¡¶«Î÷£¬×°ÂúÈİÁ¿ÎªiµÄ±³°üµÄ·½Ê½¡±
+        // æ¥ä¸‹æ¥åŸºæœ¬æŒ‰ç…§åŠ¨æ€è§„åˆ’æ ‡å‡†æ­¥éª¤èµ°
+        // åˆå§‹åŒ–dpæ•°ç»„ï¼Œdp[i]è¡¨ç¤ºâ€œä»nums[0] ~ nums[i]ä¸­é€‰ä¸œè¥¿ï¼Œè£…æ»¡å®¹é‡ä¸ºiçš„èƒŒåŒ…çš„æ–¹å¼â€
         vector<int> dp(bagSize + 1, 0);
-        dp[0] = 1; // ¡°ÍòÎïÆğÔ´¡±£¬µÃ¸³ÖµÎª1
-        for (int i = 0; i < nums.size(); ++i){
-            for (int j = bagSize; j >= nums[i]; --j){ // ×¢ÒâÕâÀïÊÇj >= nums[i]
-                // ÏÖ±³°üÈİÁ¿Îªj£¬ÊÖÉÏÓĞÒ»¸öÖØnums[i]µÄÎïÆ·£¬Ôò£ºÕÒµ½×°Âúj - nums[i]ÈİÁ¿±³°ü·½·¨£¬ÔÙ°Ñnums[i]×°½øÈ¥¾ÍĞĞ
-                dp[j] += dp[j - nums[i]]; 
+        dp[0] = 1; // â€œä¸‡ç‰©èµ·æºâ€ï¼Œå¾—èµ‹å€¼ä¸º1
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            for (int j = bagSize; j >= nums[i]; --j)
+            { // æ³¨æ„è¿™é‡Œæ˜¯j >= nums[i]
+                // ç°èƒŒåŒ…å®¹é‡ä¸ºjï¼Œæ‰‹ä¸Šæœ‰ä¸€ä¸ªé‡nums[i]çš„ç‰©å“ï¼Œåˆ™ï¼šæ‰¾åˆ°è£…æ»¡j - nums[i]å®¹é‡èƒŒåŒ…æ–¹æ³•ï¼Œå†æŠŠnums[i]è£…è¿›å»å°±è¡Œ
+                dp[j] += dp[j - nums[i]];
             }
         }
 
@@ -86,10 +87,66 @@ public:
     }
 };
 
-int main(){
-    vector<int> nums = {1, 1, 1, 1, 1};
-    Solution obj;
-    cout << "res: " << obj.findTargetSumWays(nums, 3) << endl;
+class Solution2I // äºŒåˆ·-å›æº¯ç®—æ³•
+{
+private:
+    int count = 0;
+    void backTracking(const vector<int> &nums, int target, int curSum, int index) {
+        // é€’å½’å‡ºå£ï¼šæ•°ç»„ä¸­å„æ•°éƒ½ç”¨åˆ°äº†ï¼ˆéå†ç»“æŸï¼‰
+        if (index == nums.size()) {
+            if (curSum == target) 
+                count++;
+            return;
+        }
+        // æ·»åŠ  "+"
+        curSum += nums[index]; // å¤„ç†
+        backTracking(nums, target, curSum, index + 1); // é€’å½’
+        curSum -= nums[index]; // å›æº¯
+        // æ·»åŠ  "-"
+        curSum -= nums[index];
+        backTracking(nums, target, curSum, index + 1);
+        curSum += nums[index];
+    }
+
+public:
+    int findTargetSumWays(vector<int> &nums, int target)
+    {
+        backTracking(nums, target, 0, 0);
+        return count;
+    }
+};
+
+class Solution2II // äºŒåˆ·-åŠ¨æ€è§„åˆ’ï¼ˆ01èƒŒåŒ…é—®é¢˜ï¼‰
+{
+public:
+    int findTargetSumWays(vector<int> &nums, int target)
+    {
+        // add - (sum - add) = target
+        // add = (target + sum) / 2
+        int sum = 0;
+        for (int num : nums)
+            sum += num;
+        if ((target + sum) < 0 || (target + sum) % 2 == 1)
+            return 0;
+        int add = (target + sum) / 2;
+        // èƒŒåŒ…é—®é¢˜ï¼šnumsç›¸å½“äºweightsï¼Œæ±‚è£…æ»¡å®¹é‡ä¸ºaddçš„èƒŒåŒ…æœ‰å¤šå°‘ç§æ–¹æ³•
+        vector<int> dp(add + 1);
+        dp[0] = 1;
+        // è‹¥æœ‰æ–°çš„ç‰©å“iï¼Œè¦è£…æ»¡å®¹é‡ä¸ºjçš„èƒŒåŒ…ï¼Œåˆ™åˆæ–°å¢dp[j - nums[i]]ä¸­æ–¹æ³•
+        for (int i = 0; i < nums.size(); ++i) {
+            for (int j = add; j >= nums[i]; --j)
+                dp[j] += dp[j - nums[i]];
+        }
+        return dp[add];
+    }
+};
+
+int main()
+{
+    vector<int> nums = {1};
+    Solution2II obj;
+    int res = obj.findTargetSumWays(nums, 1);
+    cout << "res: " << res << endl;
 
     return 0;
 }
