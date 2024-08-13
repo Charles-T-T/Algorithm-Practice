@@ -5,17 +5,17 @@
 using namespace std;
 
 /*
-¸øÄãÒ»¸ö Ö»°üº¬ÕıÕûÊı µÄ ·Ç¿Õ Êı×é nums ¡£ÇëÄãÅĞ¶ÏÊÇ·ñ¿ÉÒÔ½«Õâ¸öÊı×é·Ö¸î³ÉÁ½¸ö×Ó¼¯£¬Ê¹µÃÁ½¸ö×Ó¼¯µÄÔªËØºÍÏàµÈ¡£
+ç»™ä½ ä¸€ä¸ª åªåŒ…å«æ­£æ•´æ•° çš„ éç©º æ•°ç»„ nums ã€‚è¯·ä½ åˆ¤æ–­æ˜¯å¦å¯ä»¥å°†è¿™ä¸ªæ•°ç»„åˆ†å‰²æˆä¸¤ä¸ªå­é›†ï¼Œä½¿å¾—ä¸¤ä¸ªå­é›†çš„å…ƒç´ å’Œç›¸ç­‰ã€‚
 
-Ê¾Àı 1£º
-ÊäÈë£ºnums = [1,5,11,5]
-Êä³ö£ºtrue
-½âÊÍ£ºÊı×é¿ÉÒÔ·Ö¸î³É [1, 5, 5] ºÍ [11] ¡£
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šnums = [1,5,11,5]
+è¾“å‡ºï¼štrue
+è§£é‡Šï¼šæ•°ç»„å¯ä»¥åˆ†å‰²æˆ [1, 5, 5] å’Œ [11] ã€‚
 
-Ê¾Àı 2£º
-ÊäÈë£ºnums = [1,2,3,5]
-Êä³ö£ºfalse
-½âÊÍ£ºÊı×é²»ÄÜ·Ö¸î³ÉÁ½¸öÔªËØºÍÏàµÈµÄ×Ó¼¯¡£
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥ï¼šnums = [1,2,3,5]
+è¾“å‡ºï¼šfalse
+è§£é‡Šï¼šæ•°ç»„ä¸èƒ½åˆ†å‰²æˆä¸¤ä¸ªå…ƒç´ å’Œç›¸ç­‰çš„å­é›†ã€‚
 */
 
 class Solution
@@ -23,25 +23,26 @@ class Solution
 public:
     bool canPartition(vector<int> &nums)
     {
-        /** 
-         * Ë¼Â·£º
-         * È·¶¨ÁË·Ö¸î³öÈ¥µÄÒ»²¿·Ö£¬Ê£ÏÂµÄ×ÔÈ»¾ÍÊÇÁíÒ»²¿·Ö
-         * Ö»Òª·Ö¸î²¿·ÖÖ®ºÍÎª×ÜºÍµÄÒ»°ë¼´¿É
-         * 
-         * ×ª»¯Îª±³°üÎÊÌâ£º
-         * ÈİÁ¿ÎªtargetµÄ±³°ü£¬ÄÜ·ñÇ¡ºÃ×°ÏÂtarget¼ÛÖµµÄÎïÆ·
-        */
+        /**
+         * æ€è·¯ï¼š
+         * ç¡®å®šäº†åˆ†å‰²å‡ºå»çš„ä¸€éƒ¨åˆ†ï¼Œå‰©ä¸‹çš„è‡ªç„¶å°±æ˜¯å¦ä¸€éƒ¨åˆ†
+         * åªè¦åˆ†å‰²éƒ¨åˆ†ä¹‹å’Œä¸ºæ€»å’Œçš„ä¸€åŠå³å¯
+         *
+         * è½¬åŒ–ä¸ºèƒŒåŒ…é—®é¢˜ï¼š
+         * å®¹é‡ä¸ºtargetçš„èƒŒåŒ…ï¼Œèƒ½å¦æ°å¥½è£…ä¸‹targetä»·å€¼çš„ç‰©å“
+         */
         int sum = 0, target;
         for (int i = 0; i < nums.size(); i++)
             sum += nums[i];
 
         if (sum % 2 != 0)
-            return false; // ×ÜºÍ²»ÊÇÅ¼Êı£¬±ØÈ»²»¿ÉÄÜ·Ö¸îµÈºÍ×Ó¼¯
+            return false; // æ€»å’Œä¸æ˜¯å¶æ•°ï¼Œå¿…ç„¶ä¸å¯èƒ½åˆ†å‰²ç­‰å’Œå­é›†
         else
             target = sum / 2;
 
         vector<int> dp(target + 1, 0);
-        for (int i = 0; i < nums.size(); i++){
+        for (int i = 0; i < nums.size(); i++)
+        {
             for (int j = target; j >= nums[i]; j--)
             {
                 dp[j] = max(dp[j], dp[j - nums[i]] + nums[i]);
@@ -54,11 +55,102 @@ public:
             return false;
     }
 };
- 
-int main(){
-    vector<int> nums = {1, 5, 11, 5};
-    Solution obj;
-    if (obj.canPartition(nums))
+
+class Solution2I // äºŒåˆ·ï¼Œå›æº¯ç®—æ³•ï¼šè¶…æ—¶
+{
+private:
+    int curSum = 0;
+    bool flag = false;
+    void backTracking(const vector<int> &nums, int target, int start) {
+        // å‰ªæ
+        if (curSum > target)
+            return;
+        // é€’å½’å‡ºå£ï¼šå­é›†å…ƒç´ å’Œè¾¾åˆ°ç›®æ ‡å€¼
+        if (curSum == target) {
+            flag = true;
+            return;
+        }
+        for (int i = start; i < nums.size(); ++i) {
+            curSum += nums[i]; // å¤„ç†
+            backTracking(nums, target, i + 1); // é€’å½’
+            curSum -= nums[i]; // å›æº¯
+        }
+    }
+
+public:
+    bool canPartition(vector<int> &nums)
+    {
+        // å…ˆæ±‚å‡ºæ¯ä¸ªå­é›†çš„å…ƒç´ å’Œ
+        int sum = 0; 
+        for (int num : nums)
+            sum += num;
+        if (sum % 2 == 1)
+            return false; // ç›®æ ‡å’Œä¸ºå¥‡æ•°è‚¯å®šæ— æ³•å®ç°
+        sum /= 2;
+
+        // å›æº¯ç®—æ³•
+        sort(nums.begin(), nums.end());
+        backTracking(nums, sum, 0);
+        return flag;
+    }
+};
+
+class Solution2II // äºŒåˆ·ï¼ŒåŠ¨æ€è§„åˆ’ï¼ˆèƒŒåŒ…é—®é¢˜ï¼‰
+{
+public:
+    bool canPartition(vector<int> &nums)
+    {
+        // å…ˆæ±‚å‡ºæ¯ä¸ªå­é›†çš„å…ƒç´ å’Œ
+        int sum = 0;
+        for (int num : nums)
+            sum += num;
+        if (sum % 2 == 1)
+            return false; // ç›®æ ‡å’Œä¸ºå¥‡æ•°è‚¯å®šæ— æ³•å®ç°
+        sum /= 2;
+
+        // èƒŒåŒ…é—®é¢˜ï¼šèƒ½å¦å°†weightså’Œvalueséƒ½ä¸ºnumsã€å®¹é‡ä¸ºsumçš„èƒŒåŒ…æ°å¥½è£…æ»¡
+        vector<vector<int>> dp(nums.size(), vector<int>(sum + 1, 0));
+        for (int j = nums[0]; j <= sum; ++j)
+            dp[0][j] = nums[0];
+        for (int i = 1; i < nums.size(); ++i) {
+            for (int j = 0; j <= sum; ++j) {
+                if (nums[i] > j)
+                    dp[i][j] = dp[i - 1][j];
+                else
+                    dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - nums[i]] + nums[i]);
+            }
+        }
+        return dp[dp.size() - 1][sum] == sum;
+    }
+
+    // ä¸€ç»´dpç‰ˆæœ¬
+    bool canPartitionII(vector<int> &nums)
+    {
+        // å…ˆæ±‚å‡ºæ¯ä¸ªå­é›†çš„å…ƒç´ å’Œ
+        int sum = 0;
+        for (int num : nums)
+            sum += num;
+        if (sum % 2 == 1)
+            return false; // ç›®æ ‡å’Œä¸ºå¥‡æ•°è‚¯å®šæ— æ³•å®ç°
+        sum /= 2;
+
+        // èƒŒåŒ…é—®é¢˜ï¼šèƒ½å¦å°†weightså’Œvalueséƒ½ä¸ºnumsã€å®¹é‡ä¸ºsumçš„èƒŒåŒ…æ°å¥½è£…æ»¡
+        vector<int> dp(sum + 1, 0);
+        for (int j = nums[0]; j <= sum; ++j)
+            dp[j] = nums[0];
+        for (int i = 1; i < nums.size(); ++i) {
+            for (int j = sum; j >= nums[i]; --j)  // æ³¨æ„ï¼šä¸€ç»´dpè¦å€’ç€éå†å®¹é‡j
+                dp[j] = max(dp[j], dp[j - nums[i]] + nums[i]);
+        }
+        return dp[sum] == sum;
+    }
+};
+
+int main()
+{
+    vector<int> nums = {1, 2, 5};
+    Solution2II obj;
+    if (obj.canPartitionII(nums))
         cout << "True!" << endl;
     else
         cout << "False!" << endl;
