@@ -26,10 +26,8 @@ int main() {
     // std::cout << dp[m - 1][n] << std::endl;
 
     // 一维dp
-    std::vector<int> dp(n + 1);
-    for (int j = weights[0]; j <= n; ++j)
-        dp[j] = values[0];
-    for (int i = 1; i < weights.size(); ++i) {
+    std::vector<int> dp(n + 1, 0);
+    for (int i = 0; i < weights.size(); ++i) {
         for (int j = n; j >= weights[i]; --j) 
             dp[j] = std::max(dp[j], dp[j - weights[i]] + values[i]);
     }
