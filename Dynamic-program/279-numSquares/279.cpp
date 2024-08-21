@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -41,6 +42,21 @@ public:
                 curMin = min(curMin, dp[i - j * j]); 
             }
             dp[i] = curMin + 1;
+        }
+        return dp[n];
+    }
+};
+
+class Solution2 // 二刷
+{
+public:
+    int numSquares(int n)
+    {
+        vector<int> dp(n + 1, INT_MAX);
+        dp[0] = 0;
+        for (int i = 1; pow(i, 2) <= n; ++i) {
+            for (int j = pow(i, 2); j <= n; ++j)
+                dp[j] = min(dp[j], dp[j - pow(i, 2)] + 1);
         }
         return dp[n];
     }
