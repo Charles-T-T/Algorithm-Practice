@@ -15,15 +15,15 @@
 :round_pushpin: 按照题目主要涉及的**数据结构**和**算法**将题目大致分到了几个文件夹中，具体如下：
 
 - [Array：数组](#array)
-- [List：链表](###List)
+- [List：链表](#list)
 - [Binary-tree：二叉树](#binary-tree)（一些其他树的题目也放在里面了）
-- [Hash：哈希表](###Hash)
-- [String：字符串](###String)
-- [Dual-pointers：双指针](###Two%Pointers)
-- [Back-tracking：回溯算法](###Backtracking%Algorithm)
-- [Greedy-algorithm：贪心算法](###Greedy%Algorithm)
-- [Dynamic-program：动态规划](###Dynamic%Program)
-- [Graph-theory：图论](###Graph%Theory)
+- [Hash：哈希表](#hash)
+- [String：字符串](#string)
+- [Dual-pointers：双指针](#two-pointers)
+- [Back-tracking：回溯算法](#backtracking-algorithm)
+- [Greedy-algorithm：贪心算法](#greedy-algorithm)
+- [Dynamic-program：动态规划](#dynamic-program)
+- [Graph-theory：图论](#graph-theory)
 
 ## 题解笔记
 
