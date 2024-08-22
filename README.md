@@ -14,9 +14,9 @@
 
 :round_pushpin: 按照题目主要涉及的**数据结构**和**算法**将题目大致分到了几个文件夹中，具体如下：
 
-- [Array：数组](###Array)
+- [Array：数组](###array)
 - [List：链表](###List)
-- [Binary-tree：二叉树](###Binary%tree)（一些其他树的题目也放在里面了）
+- [Binary-tree：二叉树](###binary-tree)（一些其他树的题目也放在里面了）
 - [Hash：哈希表](###Hash)
 - [String：字符串](###String)
 - [Dual-pointers：双指针](###Two%Pointers)
