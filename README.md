@@ -153,20 +153,31 @@
 - [63. 不同路径 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/63-uniquePathsObstacle)
 - [70. 爬楼梯](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/70-climbStairs)
 - [96. 不同的二叉搜索树](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/96-numTrees) :star2: ​
-- [139. 单词拆分](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/139-wordBreak) :star2: ​
-- [279. 完全平方数](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/279-numSquares)
+- [121. 买卖股票的最佳时机](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/121-maxProfit) 
+- [122. 买卖股票的最佳时机 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/122-maxProfit) 
+- [123. 买卖股票的最佳时机 III](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/123-maxProfit) :star2: ​
+- [139. 单词拆分](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/139-wordBreak) :star2: 
+- [188. 买卖股票的最佳时机 IV](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/188-maxProfit) 
+- [198. 打家劫舍](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/198-rob) 
+- [213. 打家劫舍 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/213-rob)
+- [279. 完全平方数](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/279-numSquares) 
+- [300. 最长递增子序列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/300-lengthOfLIS) :star2: ​
+- [309. 买卖股票的最佳时机含冷冻期](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/309-maxProfit)
 - [322. 零钱兑换](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/322-coinChange)
 - [343. 整数拆分](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/343-integerBreak)
 - [377. 组合总和 IV](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/377-combinationSum4) :star2: ​
 - [416. 分割等和子集](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/416-canPartition)
 - [474. 一和零](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/474-findMaxForm) :star2: ​
+- [494. 目标和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/494-findTargetSumWays) 
 - [509. 斐波那契数](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/509-fib)
-- [518. 零钱兑换 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/518-change)
+- [518. 零钱兑换 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/518-change) 
+- [714. 买卖股票的最佳时机含手续费](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/714-maxProfit) 
+- [718. 最长重复子数组](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/718-findLength) :star2: ​
 - [746. 使用最小花费爬楼梯](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/746-minCostClimbStairs) :star2: ​
 - [1049. 最后一块石头的重量 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/1049-lastStoneWeightII)
 
 <br>
 
-*:triangular_flag_on_post: （2024-暑假）立下​flag：每天坚持打卡、做笔记！！！*
+- [x] ~~:triangular_flag_on_post: （2024-暑假）立下​flag：每天坚持打卡、做笔记！！！~~
 
 > 当然周日该歇还得歇 :relieved: ​
