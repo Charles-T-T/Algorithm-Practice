@@ -4,21 +4,22 @@
 using namespace std;
 
 /*
-¸øÄãÒ»¸öÁ´±í£¬Á½Á½½»»»ÆäÖÐÏàÁÚµÄ½Úµã£¬²¢·µ»Ø½»»»ºóÁ´±íµÄÍ·½Úµã¡£Äã±ØÐëÔÚ²»ÐÞ¸Ä½ÚµãÄÚ²¿µÄÖµµÄÇé¿öÏÂÍê³É±¾Ìâ£¨¼´£¬Ö»ÄÜ½øÐÐ½Úµã½»»»£©¡£
+ç»™ä½ ä¸€ä¸ªé“¾è¡¨ï¼Œä¸¤ä¸¤äº¤æ¢å…¶ä¸­ç›¸é‚»çš„èŠ‚ç‚¹ï¼Œå¹¶è¿”å›žäº¤æ¢åŽé“¾è¡¨çš„å¤´èŠ‚ç‚¹ã€‚ä½ å¿…é¡»åœ¨ä¸ä¿®æ”¹èŠ‚ç‚¹å†…éƒ¨çš„å€¼çš„æƒ…å†µä¸‹å®Œæˆæœ¬é¢˜ï¼ˆå³ï¼Œåªèƒ½è¿›è¡ŒèŠ‚ç‚¹äº¤æ¢ï¼‰ã€‚
 
-Ê¾Àý 1£º
-ÊäÈë£ºhead = [1,2,3,4]
-Êä³ö£º[2,1,4,3]
+ç¤ºä¾‹ 1ï¼š
+è¾“å…¥ï¼šhead = [1,2,3,4]
+è¾“å‡ºï¼š[2,1,4,3]
 
-Ê¾Àý 2£º
-ÊäÈë£ºhead = []
-Êä³ö£º[]
+ç¤ºä¾‹ 2ï¼š
+è¾“å…¥ï¼šhead = []
+è¾“å‡ºï¼š[]
 
-Ê¾Àý 3£º
-ÊäÈë£ºhead = [1]
-Êä³ö£º[1]
+ç¤ºä¾‹ 3ï¼š
+è¾“å…¥ï¼šhead = [1]
+è¾“å‡ºï¼š[1]
 */
-struct ListNode{
+struct ListNode
+{
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
@@ -35,19 +36,64 @@ public:
         ListNode *curNode = dummyNode;
         while (curNode->next && curNode->next->next)
         {
-            // ÔÝ´æÐèÒªÓÃµ½µÄ½Úµã
+            // æš‚å­˜éœ€è¦ç”¨åˆ°çš„èŠ‚ç‚¹
             ListNode *temp1st = curNode->next;
             ListNode *temp3rd = curNode->next->next->next;
 
-            // ½»»»½Úµã
+            // äº¤æ¢èŠ‚ç‚¹
             curNode->next = curNode->next->next;
             curNode->next->next = temp1st;
             curNode->next->next->next = temp3rd;
 
-            // ÒÆ¶¯curNode
+            // ç§»åŠ¨curNode
             curNode = curNode->next->next;
         }
 
         return dummyNode->next;
     }
 };
+
+class Solution2 // äºŒåˆ·
+{
+public:
+    ListNode *swapPairs(ListNode *head)
+    {
+        if (head == nullptr)
+            return nullptr;
+        if (head->next == nullptr)
+            return head;
+
+        ListNode *p1 = head;
+        ListNode *p2 = head->next;
+        ListNode *dummyHead = new ListNode(0); 
+        ListNode *pre = dummyHead;
+        while (p1 && p2) {
+            p1->next = p2->next;
+            p2->next = p1;
+            pre->next = p2;
+            pre = p1;
+            
+            if (p1->next)
+                p1 = p1->next;
+            else
+                break;
+
+            p2 = p1->next;
+        }
+
+        return dummyHead->next;
+    }
+};
+
+int main() {
+    ListNode *head = new ListNode(1);
+    ListNode *cur = head;
+    cur->next = new ListNode(2);
+    cur->next->next = new ListNode(3);
+    cur->next->next->next = new ListNode(4);
+
+    Solution2 obj;
+    ListNode *res = obj.swapPairs(head);
+
+    return 0;
+}
