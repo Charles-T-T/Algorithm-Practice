@@ -27,7 +27,7 @@
 
 ## 题解笔记
 
-:hourglass: $\mathbf{Long\enspace long\enspace time\enspace ago}$ 有过好好做刷题笔记的远大志向，但是实在费时费力，只望后续有机会再多写几篇 :facepunch: 
+:hourglass: $\mathbf{Long \enspace long \enspace time \enspace ago}$ 有过好好做刷题笔记的远大志向，但是实在费时费力，只望后续有机会再多写几篇 :facepunch: 
 
 :notebook: 目前带笔记的题目有（默认题目来源为LeetCode）：
 
