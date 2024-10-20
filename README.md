@@ -149,10 +149,13 @@
 - [卡码网52. 携带研究材料（完全背包问题）](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/kama52-completePackage) :star2:
 - [卡码网56. 携带矿石资源（多重背包问题）](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/kama56-mindSource) :star2:
 -  [卡码网57. 爬楼梯](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/kama57-climbPro)
+-  [53. 最大子数组和](https://github.com/Charles-T-T/Algorithm-Practice/blob/master/Dynamic-program/53-maxSubArray/README.md) :star2: ​
 - [62. 不同路径](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/62-uniquePaths)
 - [63. 不同路径 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/63-uniquePathsObstacle)
 - [70. 爬楼梯](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/70-climbStairs)
+- [72. 编辑距离](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/72-minDistance) :star2: ​
 - [96. 不同的二叉搜索树](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/96-numTrees) :star2: ​
+- [115. 不同的子序列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/115-numDistinct)
 - [121. 买卖股票的最佳时机](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/121-maxProfit) 
 - [122. 买卖股票的最佳时机 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/122-maxProfit) 
 - [123. 买卖股票的最佳时机 III](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/123-maxProfit) :star2: ​
@@ -166,14 +169,18 @@
 - [322. 零钱兑换](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/322-coinChange)
 - [343. 整数拆分](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/343-integerBreak)
 - [377. 组合总和 IV](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/377-combinationSum4) :star2: ​
+- [392. 判断子序列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/392-isSubsequence) :star2: ​
 - [416. 分割等和子集](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/416-canPartition)
 - [474. 一和零](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/474-findMaxForm) :star2: ​
 - [494. 目标和](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/494-findTargetSumWays) 
 - [509. 斐波那契数](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/509-fib)
+- [516. 最长回文子序列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/516-longestPalindromeSubseq)
 - [518. 零钱兑换 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/518-change) 
+- [647. 回文子串](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/647-countSubstrings) :star2: ​
 - [714. 买卖股票的最佳时机含手续费](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/714-maxProfit) 
 - [718. 最长重复子数组](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/718-findLength) :star2: ​
 - [746. 使用最小花费爬楼梯](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/746-minCostClimbStairs) :star2: ​
+- [1143. 最长公共子序列](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/1143-longestCommonSubsequence)
 - [1049. 最后一块石头的重量 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Dynamic-program/1049-lastStoneWeightII)
 
 <br>
