@@ -10,6 +10,9 @@
 
 :keyboard: 个人发展方向原因，代码语言基本都采用的C++​，部分题目也添加了Golang和Python的解法
 
+:link: 本仓库中的题解均收录到了我的 [CSDN专栏](https://blog.csdn.net/weixin_54468359/category_12834126.html?fromshare=blogcolumn&sharetype=blogcolumn&sharerId=12834126&sharerefer=PC&sharesource=weixin_54468359&sharefrom=from_link)
+
+
 ## 题目分类
 
 :round_pushpin: 按照题目主要涉及的**数据结构**和**算法**将题目大致分到了几个文件夹中，具体如下：
