@@ -8,7 +8,7 @@
 
 **示例 1：**
 
-![img](D:\codes\LeetCode\List\148-sortList\sort_list_1.jpg)
+![img](./sort_list_1.jpg)
 
 ```
 输入：head = [4,2,1,3]
@@ -17,7 +17,7 @@
 
 **示例 2：**
 
-![img](D:\codes\LeetCode\List\148-sortList\sort_list_2.jpg)
+![img](./sort_list_2.jpg)
 
 ```
 输入：head = [-1,5,3,4,0]

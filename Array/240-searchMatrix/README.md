@@ -11,7 +11,7 @@
 
 **示例 1：**
 
-![img1](D:\codes\LeetCode\Array\240-searchMatrix\searchgrid2.jpg) 
+![img1](./searchgrid2.jpg) 
 
 ```
 输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5
@@ -20,7 +20,7 @@
 
 **示例 2：**
 
-![img2](D:\codes\LeetCode\Array\240-searchMatrix\searchgrid.jpg) 
+![img2](./searchgrid.jpg) 
 
 ```
 输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
