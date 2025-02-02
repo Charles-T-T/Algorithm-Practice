@@ -40,6 +40,7 @@
 - [59. 螺旋矩阵 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/59-spiral_matrix)
 - [704. 二分查找](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/704-binary_search)
 - [977. 有序数组的平方](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/977-sorted_array_square)
+- [240. 搜索二维矩阵 II](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/Array/240-searchMatrix)
 
 ### List
 
@@ -50,6 +51,7 @@
 - [206. 反转链表](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/206)
 - [707. 设计链表](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/2nd-try/707)
 - [面试题 02.07. 链表相交](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/0207-getIntersectionNode) 
+- [148. 排序链表](https://github.com/Charles-T-T/Algorithm-Practice/tree/master/List/148-sortList) :star2: ​ ​
 
 ### Binary Tree
 
