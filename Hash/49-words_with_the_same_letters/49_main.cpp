@@ -47,3 +47,26 @@ public:
         return res;
     }
 };
+
+class Solution_2 {
+ public:
+  vector<vector<string>> groupAnagrams(vector<string>& strs) {
+    unordered_map<string, vector<string>> str_map;
+    for (auto str : strs) {
+      string tmp_str = str;
+      sort(str.begin(), str.end());
+      if (str_map.find(str) != str_map.end()) {
+        str_map[str].push_back(tmp_str);
+      } else {
+        str_map[str] = vector<string>{tmp_str};
+      }
+    }
+    
+    vector<vector<string>> res;
+    for (const auto& pair : str_map) {
+      res.push_back(pair.second);
+    }
+
+    return res;
+  }
+};
