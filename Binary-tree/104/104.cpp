@@ -42,3 +42,34 @@ public:
         return res;
     }
 };
+
+class Solution_2 {
+ public:
+  // 递归：最大深度=左右子树的最大深度+1
+  int maxDepth(TreeNode *root) {
+    if (!root) return 0;
+    return max(maxDepth(root->left), maxDepth(root->right)) + 1;
+  }
+
+  // 迭代：利用层序遍历
+  int maxDepthIter(TreeNode *root) {
+    queue<TreeNode*> qu;
+    int level = 0;
+    
+    if (root) qu.push(root);
+    while (!qu.empty()) {
+      vector<TreeNode*> cur_lev;
+      while (!qu.empty()) {
+        cur_lev.push_back(qu.front());
+        qu.pop();
+      }
+      for (const auto& node : cur_lev) {
+        if (node->left) qu.push(node->left);
+        if (node->right) qu.push(node->right);
+      }
+      ++level;
+    }
+
+    return level;
+  }
+};

@@ -1,4 +1,7 @@
+#include <cstddef>
 #include <iostream>
+#include <iterator>
+#include <type_traits>
 #include <vector>
 #include <stack>
 
@@ -92,6 +95,52 @@ public:
         }
         return res;
     }
+};
+
+class Solution_2 {
+ public:
+  // 递归法
+  void traverse(TreeNode *root, vector<int> &res) {
+    // 中序：左-中-右
+    if (!root) {
+      return;
+    }
+    traverse(root->left, res);
+    res.push_back(root->val);
+    traverse(root->right, res);
+  }
+  vector<int> inorderTraversal(TreeNode *root) {
+    vector<int> res;
+    traverse(root, res);
+    return res;
+  }
+
+  // 统一迭代法：用空指针标记待记录的节点
+  vector<int> inorderTraversalIter(TreeNode *root) {
+    vector<int> res;
+    
+    // 用栈实现，则需要将“左-中-右”倒过来，即“右-中-左”
+    stack<TreeNode*> st;
+    if (root) st.push(root);
+    
+    while (!st.empty()) {
+      auto top = st.top();
+      if (top) {
+        st.pop();  // 这里要pop，因为之后反正也会再入栈的
+        if (top->right) st.push(top->right);
+        st.push(top);
+        st.push(nullptr);  // 空节点标记
+        if (top->left) st.push(top->left);
+      } else {
+        // 遇到标记的空节点
+        st.pop();  // 弹出这个空节点
+        res.push_back(st.top()->val);  // 将节点值加入结果
+        st.pop();
+      }
+    }
+
+    return res;
+  }
 };
 
 int main() {

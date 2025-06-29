@@ -1,3 +1,6 @@
+#include <queue>
+#include <utility>
+#include <vector>
 #include "../levelOrderTraversal/TreeNode.h"
 
 using namespace std;
@@ -44,6 +47,30 @@ public:
         }
         return root;
     }
+};
+
+class Solution_2 {
+ public:
+  TreeNode *invertTree(TreeNode *root) {
+    // 利用层序遍历，每一层做翻转
+    queue<TreeNode*> qu;
+    if (root) qu.push(root);
+
+    while (!qu.empty()) {
+      vector<TreeNode*> cur_lev;
+      while (!qu.empty()) {
+        cur_lev.push_back(qu.front());
+        qu.pop();
+      }
+      for (auto node : cur_lev) {
+        swap(node->left, node->right);
+        if (node->left) qu.push(node->left);
+        if (node->right) qu.push(node->right);
+      }
+    }
+
+    return root;
+  }
 };
 
 int main()

@@ -1,3 +1,6 @@
+#include <deque>
+#include <type_traits>
+#include <vector>
 #include "../levelOrderTraversal/TreeNode.h"
 
 class Solution
@@ -54,4 +57,39 @@ public:
         }
         return true;
     }
+};
+
+class Solution_2 {
+ public:
+  bool isSymmetric(TreeNode *root) {
+    if (!root) return false;
+
+    // 利用层序遍历判断
+    queue<TreeNode*> qu;
+    qu.push(root->left);
+    qu.push(root->right);
+    while (!qu.empty()) {
+      auto left = qu.front();
+      qu.pop();
+      auto right = qu.front();
+      qu.pop();
+
+      // 左右子树都为空：对称
+      if (!left && !right) continue;
+
+      // 左右子树一个为空、一个不为空：不对称
+      if (static_cast<bool>(left) ^ static_cast<bool>(right)) return false;
+
+      // 左右子树都不为空：看子节点值是否相等
+      if (left->val != right->val) return false;
+
+      // 接着处理左右子树（注意“轴对称”的顺序）
+      qu.push(left->left);
+      qu.push(right->right);
+      qu.push(left->right);
+      qu.push(right->left); 
+    }   
+
+    return true;
+  }
 };
