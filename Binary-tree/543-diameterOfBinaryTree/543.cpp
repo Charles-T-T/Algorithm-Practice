@@ -57,3 +57,23 @@ public:
         return res; 
     }
 };
+
+class Solution_2 {
+ public:
+  int max_len = 0;
+  
+  // 递归求深度，顺便求路径长度
+  int depth(TreeNode *root) {
+    if (!root) return 0;
+    int l = depth(root->left);
+    int r = depth(root->right);
+    max_len = max(max_len, l + r);
+    return max(l, r) + 1;
+  }
+
+  int diameterOfBinaryTree(TreeNode *root) {
+    // “某个”节点的左右子树的（最大）深度之和，即最长路径
+    depth(root);
+    return max_len;
+  }
+};
